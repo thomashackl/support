@@ -1,0 +1,6 @@
+pluginname=Supportfunktionen
+pluginclassname=SupportPlugin
+origin=intelec
+version=1.0
+description=Collected functions for support people.
+studipMinVersion=2.4
