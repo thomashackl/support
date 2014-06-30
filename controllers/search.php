@@ -24,7 +24,8 @@ class SearchController extends StudipController {
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
                     ->setAttributes(array("placeholder" => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')))
                     ->withButton(array('width' => '500'))
-                    ->noSelectbox();
+                    ->noSelectbox()
+                    ->disableAutocomplete();
         if (Request::get('searchterm_parameter')) {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }
