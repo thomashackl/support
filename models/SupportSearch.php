@@ -57,8 +57,7 @@ class SupportSearch extends SearchType {
      */
     public function doPersonSearch($searchterm, $contextual_data) {
         return DBManager::get()->fetchAll("SELECT DISTINCT a.`user_id`,
-                a.`Vorname`, a.`Nachname`, a.`username`, i.`title_front`,
-                i.`title_rear`
+                CONCAT(a.`Vorname`, ' ', a.`Nachname`, ' (', a.`username`, ')')
             FROM `auth_user_md5` a INNER JOIN `user_info` i ON (a.`user_id` = i.`user_id`)
             WHERE (CONCAT(a.`Vorname`, ' ', a.`Nachname`) LIKE :searchterm
                 OR CONCAT(a.`Nachname`, ' ', a.`Vorname`) LIKE :searchterm
@@ -98,8 +97,7 @@ class SupportSearch extends SearchType {
      * @return array  The search results.
      */
     public function doInstituteSearch($searchterm, $contextual_data) {
-        return DBManager::get()->fetchAll("SELECT DISTINCT `Institut_id`,
-                `Name`, `fakultaets_id`
+        return DBManager::get()->fetchAll("SELECT DISTINCT `Institut_id`, `Name`
             FROM `Institute`
             WHERE `Name` LIKE :searchterm
             ORDER BY `Name`",
