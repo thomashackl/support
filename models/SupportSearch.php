@@ -45,6 +45,10 @@ class SupportSearch extends SearchType {
         }
     }
 
+    public function includePath() {
+        return __FILE__;
+    }
+
     /**
      * Executes a search for a person.
      *
