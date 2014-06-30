@@ -87,7 +87,7 @@ class SupportSearch extends SearchType {
      * @return array
      */
     public function getResults($keyword, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
-        return $this->doFullSearch($keyword, $contextual_data, $limit, $offset);
+        return self::doFullSearch($keyword, $contextual_data, $limit, $offset);
     }
 
     /**
@@ -102,9 +102,9 @@ class SupportSearch extends SearchType {
     }
 
     private function doFullSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
-        return array_merge($this->doPersonSearch($searchterm, $contextual_data, $limit, $offset),
-            $this->doCourseSearch($searchterm, $contextual_data, $limit, $offset),
-            $this->doInstituteSearch($searchterm, $contextual_data, $limit, $offset));
+        return array_merge(self::doPersonSearch($searchterm, $contextual_data, $limit, $offset),
+            self::doCourseSearch($searchterm, $contextual_data, $limit, $offset),
+            self::doInstituteSearch($searchterm, $contextual_data, $limit, $offset));
     }
 
     private function doPersonSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
