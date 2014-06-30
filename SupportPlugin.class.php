@@ -36,7 +36,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
             $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), 'search'));
             $navigation->setImage($this->getPluginURL().'/assets/images/support.png', array('title' => _('Supportfunktionen'), "@2x" => TRUE));
-            $navigation->addSubnavigation(dgettext('supportplugin', 'Suche'), new Navigation('search', PluginEngine::getURL($this, array(), 'search')));
+            $navigation->addSubnavigation('search', new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search')));
             Navigation::addItem('/support', $navigation);
         }
     }
