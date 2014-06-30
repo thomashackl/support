@@ -40,10 +40,8 @@ class SearchController extends StudipController {
         }
     }
 
-    public function do_search_action() {
+    public function result_action() {
         CSRFProtection::verifyUnsafeRequest();
-        $this->flash['results'] = SupportSearch::doFullSearch(Request::get('searchterm'));
-        $this->redirect('search/index');
     }
 
     // customized #url_for for plugins
