@@ -122,21 +122,35 @@ class SupportSearch extends SearchType {
     }
 
     private function doCourseSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+        $parameters = array();
         if (Config::get()->IMPORTANT_SEMNUMBER) {
             $query = "SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`)
                 FROM `seminare`
-                WHERE `Name` LIKE :searchterm
-                    OR `VeranstaltungsNummer` LIKE :searchterm
-                ORDER BY `start_time` DESC, `VeranstaltungsNummer`, `Name`";
+                WHERE (`Name` LIKE :searchterm
+                    OR `VeranstaltungsNummer` LIKE :searchterm)";
+            if ($contextual_data['semester']) {
+                $semester = Semester::find($contextual_data['semester']);
+                $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
+                $parameters['start'] = $semester->beginn;
+                $parameters['end'] = $semester->ende;
+            }
+            $query .= " ORDER BY `start_time` DESC, `VeranstaltungsNummer`, `Name`";
         } else {
             $query = "SELECT DISTINCT `Seminar_id`, `Name`
                 FROM `seminare`
-                WHERE `Name` LIKE :searchterm
-                    OR `VeranstaltungsNummer` LIKE :searchterm
-                ORDER BY `start_time` DESC, `Name`";
+                WHERE (`Name` LIKE :searchterm
+                    OR `VeranstaltungsNummer` LIKE :searchterm)";
+            if ($contextual_data['semester']) {
+                $semester = Semester::find($contextual_data['semester']);
+                $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
+                $parameters['start'] = $semester->beginn;
+                $parameters['end'] = $semester->ende;
+            }
+            $query .= " ORDER BY `start_time` DESC, `Name`";
         }
+        $parameters['searchterm'] = '%'.$searchterm.'%';
         $stmt = DBManager::get()->prepare($query);
-        $stmt->execute(array('searchterm' => '%'.$searchterm.'%'));
+        $stmt->execute($parameters);
         return $stmt->fetchAll(PDO::FETCH_NUM);
     }
 
