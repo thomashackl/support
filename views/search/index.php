@@ -5,8 +5,6 @@
         <?= dgettext('supportplugin', 'Suchbegriff:') ?>
     </label>
     <input type="text" name="searchterm" value="<?= $searchterm ? htmlReady($searchterm) : '' ?>" size="75" maxlength="255" placeholder="<?= dgettext('supportplugin', 'Geben Sie hier Ihren Suchbegriff ein.') ?>"/>    
-    <div class="submit_wrapper">
-        <?= CSRFProtection::tokenTag() ?>
-        <?= Button::createAccept(dgettext('supportplugin', 'Suchen'), 'submit') ?>
-    </div>
+    <?= CSRFProtection::tokenTag() ?>
+    <?= Button::createAccept(dgettext('supportplugin', 'Suchen'), 'submit') ?>
 </form>

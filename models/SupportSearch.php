@@ -13,16 +13,36 @@
  *
  */
 
-class SupportSearch {
+class SupportSearch extends SearchType {
 
-    /**
-     * Executes a full search across persons, courses and institutes.
-     *
-     * @param  String $searchterm the term to search for
-     * @return array  The categorized search results.
-     */
-    public static function doFullSearch($searchterm) {
-        
+    public function getTitle() {
+        return dgettext('supportplugin', 'Suche nach Veranstaltungen, Personen und Einrichtungen');
+    }
+
+    public function getResults($keyword, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+         return $this->doPersonSearch($keyword, $contextual_data) +
+            $this->doCourseSearch($keyword, $contextual_data) +
+            $this->doInstituteSearch($keyword, $contextual_data);
+    }
+
+    public function getAvatarImageTag($id) {
+        switch(get_object_type($id)) {
+            case 'sem':
+                $class = 'CourseAvatar';
+                break;
+            case 'user':
+                $class = 'Avatar';
+                break;
+            case 'inst':
+            case 'fak':
+                $class = 'InstituteAvatar';
+                break;
+        }
+        if ($class) {
+            return $class::getAvatar($id)->getImageTag(Avatar::SMALL);
+        } else {
+            return '';
+        }
     }
 
     /**
@@ -31,7 +51,7 @@ class SupportSearch {
      * @param  String $searchterm the term to search for (parts of or full username/name)
      * @return array  The search results.
      */
-    public static function doPersonSearch($searchterm) {
+    public function doPersonSearch($searchterm, $contextual_data) {
         return DBManager::get()->fetchAll("SELECT DISTINCT a.`user_id`,
                 a.`Vorname`, a.`Nachname`, a.`username`, i.`title_front`,
                 i.`title_rear`
@@ -49,14 +69,18 @@ class SupportSearch {
      * @param  String $searchterm the term to search for (parts of or full course name/number)
      * @return array  The search results.
      */
-    public static function doCourseSearch($searchterm) {
+    public function doCourseSearch($searchterm, $contextual_data) {
         $query = "SELECT DISTINCT `Seminar_id`,
                 `Name`, `VeranstaltungsNummer`, `status`
             FROM `seminare`
             WHERE `Name` LIKE :searchterm
                 OR `VeranstaltungsNummer` LIKE :searchterm";
         if (Config::get()->IMPORTANT_SEMNUMBER) {
-            $query .= " ORDER BY `VeranstaltungsNummer`, `Name`, `status`";
+            $query = "SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`) AS name
+                FROM `seminare`
+                WHERE `Name` LIKE :searchterm
+                    OR `VeranstaltungsNummer` LIKE :searchterm
+                ORDER BY name";
         } else {
             $query .= " ORDER BY `Name`, `status`";
         }
@@ -69,7 +93,7 @@ class SupportSearch {
      * @param  String $searchterm the term to search for (parts of or full name)
      * @return array  The search results.
      */
-    public static function doInstituteSearch($searchterm) {
+    public function doInstituteSearch($searchterm, $contextual_data) {
         return DBManager::get()->fetchAll("SELECT DISTINCT `Institut_id`,
                 `Name`, `fakultaets_id`
             FROM `Institute`

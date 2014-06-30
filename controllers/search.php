@@ -25,9 +25,13 @@ class SearchController extends StudipController {
     }
 
     public function index_action() {
+        Navigation::activateItem('/support/search');
         if ($this->flash['results']) {
             $this->searchresult = $this->flash['results'];
         }
+        $this->search = QuickSearch::get("seminar", new SupportSearch())
+                ->setAttributes(array("placeholder" => dgettext('supportplugin', 'Geben Sie hier Ihren Suchbegriff ein')))
+                ->render();
     }
 
     public function do_search_action() {
