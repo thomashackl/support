@@ -11,7 +11,7 @@
 
 class SearchController extends StudipController {
 
-    public function before_filter(&$action, &$args) {        
+    public function before_filter(&$action, &$args) {
         $this->current_action = $action;
         $this->validate_args($args);
         $this->flash = Trails_Flash::instance();
@@ -29,9 +29,15 @@ class SearchController extends StudipController {
         if ($this->flash['results']) {
             $this->searchresult = $this->flash['results'];
         }
-        $this->search = QuickSearch::get("seminar", new SupportSearch())
+        $this->search = QuickSearch::get('searchterm', new SupportSearch())
                 ->setAttributes(array("placeholder" => dgettext('supportplugin', 'Geben Sie hier Ihren Suchbegriff ein')))
                 ->render();
+        $current_semester = Semester::findCurrent();
+        if (time() >= $current_semester->vorles_ende) {
+            $this->selected_semester = Semester::findNext()->id;
+        } else {
+            $this->selected_semester = $current_semester->id;
+        }
     }
 
     public function do_search_action() {

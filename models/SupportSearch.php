@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SupportSearch.php - Search functions needed for support work
  *
@@ -15,93 +16,141 @@
 
 class SupportSearch extends SearchType {
 
+    /**
+     * title of the search like "search for courses" or just "courses"
+     *
+     * @return string
+     */
     public function getTitle() {
         return dgettext('supportplugin', 'Suche nach Veranstaltungen, Personen und Einrichtungen');
     }
 
-    public function getResults($keyword, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
-         return $this->doPersonSearch($keyword, $contextual_data) +
-            $this->doCourseSearch($keyword, $contextual_data) +
-            $this->doInstituteSearch($keyword, $contextual_data);
-    }
-
-    public function getAvatarImageTag($id) {
-        switch(get_object_type($id)) {
+    /**
+     * Returns an URL to a picture of that type. Return "" for nothing found.
+     * For example: "return CourseAvatar::getAvatar($id)->getURL(Avatar::SMALL)".
+     *
+     * @param string $id
+     *
+     * @return: string URL to a picture
+     */
+    public function getAvatar($id) {
+        switch (get_object_type($id)) {
             case 'sem':
-                $class = 'CourseAvatar';
-                break;
+                return CourseAvatar::getAvatar($id)->getURL(Avatar::SMALL);
             case 'user':
-                $class = 'Avatar';
-                break;
+                return Avatar::getAvatar($id)->getURL(Avatar::SMALL);
             case 'inst':
             case 'fak':
-                $class = 'InstituteAvatar';
-                break;
+                return InstituteAvatar::getAvatar($id)->getURL(Avatar::SMALL);
         }
-        if ($class) {
-            return $class::getAvatar($id)->getImageTag(Avatar::SMALL);
-        } else {
-            return '';
-        }
+        return "";
     }
 
+    /**
+     * Returns an HTML-Tag of a picture of that type. Return "" for nothing found.
+     * For example: "return CourseAvatar::getAvatar($id)->getImageTag(Avatar::SMALL)".
+     *
+     * @param string $id
+     *
+     * @return string HTML of a picture
+     */
+    public function getAvatarImageTag($id) {
+        switch (get_object_type($id)) {
+            case 'sem':
+                return CourseAvatar::getAvatar($id)->getImageTag(Avatar::SMALL);
+            case 'user':
+                return Avatar::getAvatar($id)->getImageTag(Avatar::SMALL);
+            case 'inst':
+            case 'fak':
+                return InstituteAvatar::getAvatar($id)->getImageTag(Avatar::SMALL);
+        }
+        return "";
+    }
+
+    /**
+     * Returns the results to a given keyword. To get the results is the
+     * job of this routine and it does not even need to come from a database.
+     * The results should be an array in the form
+     * array (
+     *   array($key, $name),
+     *   array($key, $name),
+     *   ...
+     * )
+     * where $key is an identifier like user_id and $name is a displayed text
+     * that should appear to represent that ID.
+     *
+     * @param string $keyword
+     * @param string $contextual_data
+     * @param int $limit maximum number of results (default: all)
+     * @param int $offset return results starting from this row (default: 0)
+     *
+     * @return array
+     */
+    public function getResults($keyword, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+        return $this->doPersonSearch($keyword, $contextual_data, $limit, $offset) +
+            $this->doCourseSearch($keyword, $contextual_data, $limit, $offset) +
+            $this->doInstituteSearch($keyword, $contextual_data, $limit, $offset);
+    }
+
+    /**
+     * Returns the path to this file, so that this class can be autoloaded and is
+     * always available when necessary.
+     * Should be: "return __file__;"
+     *
+     * @return string path to this file
+     */
     public function includePath() {
         return __FILE__;
     }
 
-    /**
-     * Executes a search for a person.
-     *
-     * @param  String $searchterm the term to search for (parts of or full username/name)
-     * @return array  The search results.
-     */
-    public function doPersonSearch($searchterm, $contextual_data) {
-        return DBManager::get()->fetchAll("SELECT DISTINCT a.`user_id`,
-                CONCAT(a.`Vorname`, ' ', a.`Nachname`, ' (', a.`username`, ')')
-            FROM `auth_user_md5` a INNER JOIN `user_info` i ON (a.`user_id` = i.`user_id`)
-            WHERE (CONCAT(a.`Vorname`, ' ', a.`Nachname`) LIKE :searchterm
-                OR CONCAT(a.`Nachname`, ' ', a.`Vorname`) LIKE :searchterm
-                OR a.`username` LIKE :searchterm)
-            ORDER BY a.`Nachname`, a.`Vorname`, a.`username`",
-            array('searchterm' => $searchterm));
+    private function doFullSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+        return $this->doPersonSearch($searchterm, $contextual_data, $limit, $offset) +
+            $this->doCourseSearch($searchterm, $contextual_data, $limit, $offset) +
+            $this->doInstituteSearch($searchterm, $contextual_data, $limit, $offset);
     }
 
-    /**
-     * Executes a search for a course.
-     *
-     * @param  String $searchterm the term to search for (parts of or full course name/number)
-     * @return array  The search results.
-     */
-    public function doCourseSearch($searchterm, $contextual_data) {
-        $query = "SELECT DISTINCT `Seminar_id`,
-                `Name`, `VeranstaltungsNummer`, `status`
-            FROM `seminare`
-            WHERE `Name` LIKE :searchterm
-                OR `VeranstaltungsNummer` LIKE :searchterm";
+    private function doPersonSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+        $stmt = DBManager::get()->prepare(
+            "SELECT DISTINCT `user_id`, CONCAT(`Vorname`, ' ', `Nachname`, ' (', `username`, ')')
+            FROM `auth_user_md5`
+            WHERE `username` LIKE :searchterm
+                OR `Vorname` LIKE :searchterm
+                OR `Nachname` LIKE :searchterm
+                OR CONCAT(`Vorname`, ' ', `Nachname`) LIKE :searchterm
+                OR CONCAT(`Nachname`, ' ', `Vorname`) LIKE :searchterm
+            ORDER BY `Nachname`, `Vorname`, `username`");
+        $stmt->execute(array('searchterm' => implode('%', explode(' ', '%'.$searchterm.'%'))));
+        return $stmt->fetchAll(PDO::FETCH_NUM);
+    }
+
+    private function doCourseSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
         if (Config::get()->IMPORTANT_SEMNUMBER) {
-            $query = "SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`) AS name
+            $query = "SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`)
                 FROM `seminare`
                 WHERE `Name` LIKE :searchterm
                     OR `VeranstaltungsNummer` LIKE :searchterm
-                ORDER BY name";
+                ORDER BY `start_time` DESC, `VeranstaltungsNummer`, `Name`";
         } else {
-            $query .= " ORDER BY `Name`, `status`";
+            $query = "SELECT DISTINCT `Seminar_id`, `Name`
+                FROM `seminare`
+                WHERE `Name` LIKE :searchterm
+                    OR `VeranstaltungsNummer` LIKE :searchterm
+                ORDER BY `start_time` DESC, `Name`";
         }
-        return DBManager::get()->fetchAll($query, array('searchterm' => $searchterm));
+        $stmt = DBManager::get()->prepare($query);
+        $stmt->execute(array('searchterm' => '%'.$searchterm.'%'));
+        return $stmt->fetchAll(PDO::FETCH_NUM);
     }
 
-    /**
-     * Executes a search for an institute.
-     *
-     * @param  String $searchterm the term to search for (parts of or full name)
-     * @return array  The search results.
-     */
-    public function doInstituteSearch($searchterm, $contextual_data) {
-        return DBManager::get()->fetchAll("SELECT DISTINCT `Institut_id`, `Name`
+    private function doInstituteSearch($searchterm, $contextual_data = array(), $limit = PHP_INT_MAX, $offset = 0) {
+        $stmt = DBManager::get()->prepare(
+            "SELECT DISTINCT `Institut_id`, `Name`
             FROM `Institute`
             WHERE `Name` LIKE :searchterm
-            ORDER BY `Name`",
-            array('searchterm' => $searchterm));
+            ORDER BY `Name`");
+        $stmt->execute(array('searchterm' => implode('%', explode(' ', '%'.$searchterm.'%'))));
+        return $stmt->fetchAll(PDO::FETCH_NUM);
     }
 
 }
+
