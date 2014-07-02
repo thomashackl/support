@@ -24,8 +24,7 @@ class SearchController extends StudipController {
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
                     ->setAttributes(array("placeholder" => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')))
                     ->withButton(array('width' => '500'))
-                    ->noSelectbox()
-                    ->disableAutocomplete();
+                    ->noSelectbox();
         if (Request::get('searchterm_parameter')) {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }
@@ -46,19 +45,26 @@ class SearchController extends StudipController {
         CSRFProtection::verifyUnsafeRequest();
         $this->selected_semester = Request::option('semester');
         $search = new SupportSearch();
-        $result = $search->getResults(Request::option('searchterm_parameter'), array('semester' => Request::option('semester')));
+        if (Request::option('searchterm')) {
+            $result = $search->getResultsById(Request::option('searchterm'), get_object_type(Request::option('searchterm')));
+        } else if (Request::get('searchterm_parameter')) {
+            $result = $search->getResults(Request::get('searchterm_parameter'), array('semester' => Request::option('semester')));
+        }
         $this->persons = array();
         $this->courses = array();
         $this->institutes = array();
-        foreach ($result as $id => $name) {
-            switch (get_object_type($id)) {
+        foreach ($result as $entry) {
+            switch (get_object_type($entry[0])) {
                 case 'user':
-                    $this->persons[] = User::find($id);
+                    $this->persons[] = User::find($entry[0]);
+                    break;
                 case 'sem':
-                    $this->courses[] = Course::find($id);
+                    $this->courses[] = Course::find($entry[0]);
+                    break;
                 case 'inst':
                 case 'fak':
-                    $this->institutes[] = Institute::find($id);
+                    $this->institutes[] = Institute::find($entry[0]);
+                    break;
             }
         }
     }

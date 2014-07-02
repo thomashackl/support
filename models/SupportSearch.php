@@ -90,6 +90,28 @@ class SupportSearch extends SearchType {
         return self::doFullSearch($keyword, $contextual_data, $limit, $offset);
     }
 
+    public function getResultsById($id, $type) {
+        $db = DBManager::get();
+        switch ($type) {
+            case 'user':
+                $stmt = $db->prepare("SELECT DISTINCT `user_id`, CONCAT(`Vorname`, ' ', `Nachname`, ' (', `username`, ')') FROM `auth_user_md5` WHERE `user_id`=?");
+                break;
+            case 'sem':
+                if (Config::get()->IMPORTANT_SEMNUMBER) {
+                    $stmt = $db->prepare("SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`) FROM `seminare` WHERE `Seminar_id`=?");
+                } else {
+                    $stmt = $db->prepare("SELECT DISTINCT `Seminar_id`, `Name` FROM `seminare` WHERE `Seminar_id`=?");
+                }
+                break;
+            case 'inst':
+            case 'fak':
+                $stmt = $db->prepare("SELECT DISTINCT `Institut_id`, `Name` FROM `Institute` WHERE `Institut_id`=?");
+                break;
+        }
+        $stmt->execute(array($id));
+        return array($stmt->fetch(PDO::FETCH_NUM));
+    }
+
     /**
      * Returns the path to this file, so that this class can be autoloaded and is
      * always available when necessary.
@@ -160,7 +182,7 @@ class SupportSearch extends SearchType {
             FROM `Institute`
             WHERE `Name` LIKE :searchterm
             ORDER BY `Name`");
-        $stmt->execute(array('searchterm' => implode('%', explode(' ', '%'.$searchterm.'%'))));
+        $stmt->execute(array('searchterm' => '%'.$searchterm.'%'));
         return $stmt->fetchAll(PDO::FETCH_NUM);
     }
 
