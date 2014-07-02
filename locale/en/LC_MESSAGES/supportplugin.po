@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 08:55+0200\n"
+"POT-Creation-Date: 2014-07-02 16:47+0200\n"
 "PO-Revision-Date: 2014-06-27 13:33+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English <http://example.com/weblate/projects/studip/"
@@ -18,6 +18,32 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.10-dev\n"
+
+#: controllers/links.php:30
+msgid "Informationen"
+msgstr ""
+
+#: controllers/links.php:31
+msgid ""
+"Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
+"Inhalten."
+msgstr ""
+
+#: controllers/links.php:36
+msgid "Aktionen"
+msgstr ""
+
+#: controllers/links.php:39 controllers/links.php:41 controllers/links.php:52
+msgid "Link hinzufügen"
+msgstr ""
+
+#: controllers/links.php:52
+msgid "Link bearbeiten"
+msgstr ""
+
+#: controllers/links.php:69
+msgid "Die Änderungen wurden gespeichert."
+msgstr ""
 
 #: controllers/search.php:25
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
@@ -35,9 +61,45 @@ msgstr "Support functions"
 msgid "Suche"
 msgstr "Search"
 
-#: SupportPlugin.class.php:48
+#: SupportPlugin.class.php:43
+msgid "Wichtige Links"
+msgstr ""
+
+#: SupportPlugin.class.php:55
 msgid "Support"
 msgstr "Support"
+
+#: views/links/edit.php:4
+msgid "Linkziel"
+msgstr ""
+
+#: views/links/edit.php:8
+msgid "Titel des Links"
+msgstr ""
+
+#: views/links/edit.php:12
+msgid "Beschreibungstext"
+msgstr ""
+
+#: views/links/edit.php:16
+msgid "Reihenfolge"
+msgstr ""
+
+#: views/links/edit.php:21
+msgid "Speichern"
+msgstr ""
+
+#: views/links/edit.php:22
+msgid "Abbrechen"
+msgstr ""
+
+#: views/links/index.php:10
+msgid "Eintrag bearbeiten"
+msgstr ""
+
+#: views/links/index.php:16
+msgid "Es sind keine Links vorhanden."
+msgstr ""
 
 #: views/search/_search.php:5
 msgid "Semester für Veranstaltungen:"
@@ -56,8 +118,8 @@ msgstr "Search"
 msgid "Personen"
 msgstr ""
 
-#: views/search/result.php:8 views/search/result.php:31
-#: views/search/result.php:52
+#: views/search/result.php:8 views/search/result.php:39
+#: views/search/result.php:68
 msgid "Name"
 msgstr ""
 
@@ -65,25 +127,40 @@ msgstr ""
 msgid "Nutzername"
 msgstr ""
 
-#: views/search/result.php:10 views/search/result.php:32
-#: views/search/result.php:53
+#: views/search/result.php:10 views/search/result.php:40
+#: views/search/result.php:69
 msgid "Info"
 msgstr ""
 
-#: views/search/result.php:26
+#: views/search/result.php:17 views/search/result.php:22
+#, php-format
+msgid "Profil von %s"
+msgstr ""
+
+#: views/search/result.php:34
 msgid "Veranstaltungen"
 msgstr ""
 
-#: views/search/result.php:29
+#: views/search/result.php:37
 msgid "Semester"
 msgstr ""
 
-#: views/search/result.php:30
+#: views/search/result.php:38
 msgid "Nummer"
 msgstr ""
 
-#: views/search/result.php:49
+#: views/search/result.php:48 views/search/result.php:53
+#, php-format
+msgid "Zur Veranstaltung %s"
+msgstr ""
+
+#: views/search/result.php:65
 msgid "Einrichtungen"
+msgstr ""
+
+#: views/search/result.php:76
+#, php-format
+msgid "Zur Einrichtung %s"
 msgstr ""
 
 #~ msgid "Suchbegriff:"
