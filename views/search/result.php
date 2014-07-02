@@ -14,12 +14,12 @@
         <?php foreach ($persons as $u) { ?>
         <tr data-id="<?= $u->id ?>">
             <td>
-                <a href="<?= URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Profil von %s'), htmlReady($u->getFullname())) ?>">
+                <a href="<?= URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Profil von %s'), htmlReady($u->getFullname()))) ?>">
                     <?= htmlReady($u->getFullname()) ?>
                 </a>
             </td>
             <td>
-                <a href="<?= URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Profil von %s'), htmlReady($u->getFullname())) ?>">
+                <a href="<?= URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Profil von %s'), htmlReady($u->getFullname()))) ?>">
                     <?= htmlReady($u->username) ?>
                 </a>
             </td>
@@ -45,12 +45,12 @@
         <tr data-id="<?= $c->id ?>">
             <td><?= htmlReady($c->start_semester->name) ?></td>
             <td>
-                <a href="<?= URLHelper::getLink('seminar_main.php', array('auswahl' => $c->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Veranstaltung %s'), htmlReady($c->name)) ?>">
+                <a href="<?= URLHelper::getLink('seminar_main.php', array('auswahl' => $c->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Veranstaltung %s'), htmlReady($c->name))) ?>">
                     <?= htmlReady($c->veranstaltungsnummer) ?>
                 </a>
             </td>
             <td>
-                <a href="<?= URLHelper::getLink('seminar_main.php', array('auswahl' => $c->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Veranstaltung %s'), htmlReady($c->name)) ?>">
+                <a href="<?= URLHelper::getLink('seminar_main.php', array('auswahl' => $c->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Veranstaltung %s'), htmlReady($c->name))) ?>">
                     <?= htmlReady($c->name) ?>
                 </a>
             </td>
@@ -73,7 +73,7 @@
         <?php foreach ($institutes as $i) { ?>
         <tr data-id="<?= $i->id ?>">
             <td>
-                <a href="<?= URLHelper::getLink('institut_main.php', array('auswahl' => $i->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Einrichtung %s'), htmlReady($i->name)) ?>">
+                <a href="<?= URLHelper::getLink('institut_main.php', array('auswahl' => $i->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Einrichtung %s'), htmlReady($i->name))) ?>">
                     <?= htmlReady($i->name) ?>
                 </a>
             </td>
