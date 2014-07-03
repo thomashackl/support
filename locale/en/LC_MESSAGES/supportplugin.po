@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 14:20+0200\n"
+"POT-Creation-Date: 2014-07-03 14:56+0200\n"
 "PO-Revision-Date: 2014-06-27 13:33+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English <http://example.com/weblate/projects/studip/"
@@ -19,33 +19,33 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.10-dev\n"
 
-#: controllers/links.php:44 controllers/search.php:38
+#: controllers/links.php:35 controllers/search.php:37
 msgid "Informationen"
 msgstr ""
 
-#: controllers/links.php:45
+#: controllers/links.php:36
 msgid ""
 "Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
 "Inhalten."
 msgstr ""
 
-#: controllers/links.php:50
+#: controllers/links.php:41
 msgid "Aktionen"
 msgstr ""
 
-#: controllers/links.php:53 controllers/links.php:55 controllers/links.php:66
+#: controllers/links.php:44 controllers/links.php:46 controllers/links.php:57
 msgid "Link hinzufügen"
 msgstr ""
 
-#: controllers/links.php:66
+#: controllers/links.php:57
 msgid "Link bearbeiten"
 msgstr ""
 
-#: controllers/links.php:83
+#: controllers/links.php:74
 msgid "Die Änderungen wurden gespeichert."
 msgstr ""
 
-#: controllers/links.php:85
+#: controllers/links.php:76
 msgid "Die Änderungen konnten nicht gespeichert werden."
 msgstr ""
 
@@ -53,7 +53,7 @@ msgstr ""
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
 msgstr ""
 
-#: controllers/search.php:39
+#: controllers/search.php:38
 msgid ""
 "Die Suche findet sowohl Personen als auch Veranstaltungen und Einrichtungen, "
 "unabhängig von den Sichtbarkeitseinstellungen."
@@ -75,7 +75,7 @@ msgstr "Search"
 msgid "Wichtige Links"
 msgstr ""
 
-#: SupportPlugin.class.php:55
+#: SupportPlugin.class.php:67
 msgid "Support"
 msgstr "Support"
 
