@@ -79,7 +79,6 @@ class LinksController extends StudipController {
     }
 
     public function delete_action($id) {
-        CSRFProtection::verifyUnsafeRequest();
         $link = SupportLink::find($id);
         $title = $link->title;
         if ($link->delete()) {
@@ -97,13 +96,12 @@ class LinksController extends StudipController {
             $l->store();
             $i++;
         }
-        redirect($this->url_for('links'));
+        $this->redirect($this->url_for('links'));
     }
 
     public function up_action($id) {
-        CSRFProtection::verifyUnsafeRequest();
         $link = SupportLink::find($id);
-        $next = SupportLink::findBySQL("`position`>? ORDER BY `position` LIMIT 1");
+        $next = SupportLink::findBySQL("`position`>? ORDER BY `position` LIMIT 1", array($link->position));
         if ($next[0]) {
             $swap = $next[0];
             $swap->position = $link->position;
@@ -111,13 +109,12 @@ class LinksController extends StudipController {
         }
         $link->position++;
         $link->store();
-        redirect($this->url_for('links'));
+        $this->redirect($this->url_for('links'));
     }
 
     public function down_action($id) {
-        CSRFProtection::verifyUnsafeRequest();
         $link = SupportLink::find($id);
-        $prev = SupportLink::findBySQL("`position`<? ORDER BY `position` DESC LIMIT 1");
+        $prev = SupportLink::findBySQL("`position`<? ORDER BY `position` DESC LIMIT 1", array($link->position));
         if ($prev[0]) {
             $swap = $prev[0];
             $swap->position = $link->position;
@@ -125,7 +122,7 @@ class LinksController extends StudipController {
         }
         $link->position--;
         $link->store();
-        redirect($this->url_for('links'));
+        $this->redirect($this->url_for('links'));
     }
 
     // customized #url_for for plugins
