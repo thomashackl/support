@@ -23,8 +23,7 @@ class SearchController extends StudipController {
         Navigation::activateItem('/support/search');
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
                     ->setAttributes(array(
-                        'placeholder' => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen'),
-                        'data-redirect-url' => $this->url_for('search/redirect')
+                        'placeholder' => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')
                     ))
                     ->withButton(array('width' => '500'))
                     ->noSelectbox()
@@ -91,7 +90,7 @@ class SearchController extends StudipController {
                 break;
             case 'inst':
             case 'fak':
-                $this->redirect(URLHelper::getLink('institut_main.php', array('auswahl' => $c->id)));
+                $this->redirect(URLHelper::getLink('institut_main.php', array('auswahl' => $id)));
                 break;
         }
     }

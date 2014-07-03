@@ -1,5 +1,5 @@
 <?php use Studip\Button; ?>
-<form action="<?= $controller->url_for('search/result') ?>" method="post">
+<form action="<?= $controller->url_for('search/result') ?>" method="post" id="supportsearch" data-redirect-url="<?= $controller->url_for('search/redirect') ?>">
     <?= $search ?>
     <label for="semester">
         <?= dgettext('supportplugin', 'Semester für Veranstaltungen:') ?>
