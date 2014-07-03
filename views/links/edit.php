@@ -14,7 +14,7 @@
     </label>
     <label class="caption">
         <?= dgettext('supportplugin', 'Reihenfolge') ?>
-        <input type="text" name="position" value="<?= $link ? $link->position : 0 ?>" size="4" maxlength="2"/>
+        <input type="number" name="position" value="<?= $link ? $link->position : 1 ?>" size="4" maxlength="2" min="1" max="99"/>
     </label>
     <?= CSRFProtection::tokenTag() ?>
     <?php if ($link) { ?>
