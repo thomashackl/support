@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-02 16:47+0200\n"
+"POT-Creation-Date: 2014-07-03 14:20+0200\n"
 "PO-Revision-Date: 2014-06-27 13:33+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English <http://example.com/weblate/projects/studip/"
@@ -19,34 +19,44 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.10-dev\n"
 
-#: controllers/links.php:30
+#: controllers/links.php:44 controllers/search.php:38
 msgid "Informationen"
 msgstr ""
 
-#: controllers/links.php:31
+#: controllers/links.php:45
 msgid ""
 "Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
 "Inhalten."
 msgstr ""
 
-#: controllers/links.php:36
+#: controllers/links.php:50
 msgid "Aktionen"
 msgstr ""
 
-#: controllers/links.php:39 controllers/links.php:41 controllers/links.php:52
+#: controllers/links.php:53 controllers/links.php:55 controllers/links.php:66
 msgid "Link hinzufügen"
 msgstr ""
 
-#: controllers/links.php:52
+#: controllers/links.php:66
 msgid "Link bearbeiten"
 msgstr ""
 
-#: controllers/links.php:69
+#: controllers/links.php:83
 msgid "Die Änderungen wurden gespeichert."
 msgstr ""
 
-#: controllers/search.php:25
+#: controllers/links.php:85
+msgid "Die Änderungen konnten nicht gespeichert werden."
+msgstr ""
+
+#: controllers/search.php:26
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
+msgstr ""
+
+#: controllers/search.php:39
+msgid ""
+"Die Suche findet sowohl Personen als auch Veranstaltungen und Einrichtungen, "
+"unabhängig von den Sichtbarkeitseinstellungen."
 msgstr ""
 
 #: models/SupportSearch.php:25
@@ -85,19 +95,23 @@ msgstr ""
 msgid "Reihenfolge"
 msgstr ""
 
-#: views/links/edit.php:21
+#: views/links/edit.php:24
 msgid "Speichern"
 msgstr ""
 
-#: views/links/edit.php:22
+#: views/links/edit.php:25
 msgid "Abbrechen"
 msgstr ""
 
-#: views/links/index.php:10
+#: views/links/index.php:15
 msgid "Eintrag bearbeiten"
 msgstr ""
 
-#: views/links/index.php:16
+#: views/links/index.php:17
+msgid "Eintrag löschen"
+msgstr ""
+
+#: views/links/index.php:26
 msgid "Es sind keine Links vorhanden."
 msgstr ""
 

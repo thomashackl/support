@@ -1,0 +1,12 @@
+div.supportlink {
+    margin-left: 25px;
+    margin-bottom: 10px;
+}
+
+div.supportlink div.actions {
+    display: none;
+}
+
+div.supportlink:hover div.actions {
+    display: inline;
+}

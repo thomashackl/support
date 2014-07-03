@@ -22,14 +22,25 @@ class SearchController extends StudipController {
         }
         Navigation::activateItem('/support/search');
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
-                    ->setAttributes(array("placeholder" => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')))
+                    ->setAttributes(array(
+                        'placeholder' => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen'),
+                        'data-redirect-url' => $this->url_for('search/redirect')
+                    ))
                     ->withButton(array('width' => '500'))
-                    ->noSelectbox();
+                    ->noSelectbox()
+                    ->fireJSFunctionOnSelect('STUDIP.SupportPlugin.selectSearchResult');
         if (Request::get('searchterm_parameter')) {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }
         $this->search = $this->search->render();
         $this->set_content_type('text/html;charset=windows-1252');
+        $this->setInfoBoxImage($this->dispatcher->plugin->getPluginURL().'/assets/images/infobox.png');
+        $this->addToInfobox(dgettext('supportplugin', 'Informationen'),
+                            dgettext('supportplugin', 'Die Suche findet sowohl '.
+                            'Personen als auch Veranstaltungen und '.
+                            'Einrichtungen, unabhängig von den '.
+                            'Sichtbarkeitseinstellungen.'),
+                            'icons/16/black/search.png');
     }
 
     public function index_action() {
@@ -66,6 +77,22 @@ class SearchController extends StudipController {
                     $this->institutes[] = Institute::find($entry[0]);
                     break;
             }
+        }
+    }
+
+    function redirect_action($id) {
+        switch(get_object_type($id)) {
+            case 'user':
+                $u = User::find($id);
+                $this->redirect(URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)));
+                break;
+            case 'sem':
+                $this->redirect(URLHelper::getLink('seminar_main.php', array('auswahl' => $id)));
+                break;
+            case 'inst':
+            case 'fak':
+                $this->redirect(URLHelper::getLink('institut_main.php', array('auswahl' => $c->id)));
+                break;
         }
     }
 

@@ -22,11 +22,25 @@ class LinksController extends StudipController {
         }
         Navigation::activateItem('/support/links');
         $this->set_content_type('text/html;charset=windows-1252');
+        if (Studip\ENV == 'development') {
+            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
+            $js = $this->dispatcher->plugin->getPluginURL().'/assets/supportplugin.js';
+        } else {
+            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
+            $js = $this->getPluginURL().'/assets/supportplugin.min.js';
+        }
+        PageLayout::addStylesheet($css);
+        PageLayout::addScript($js);
     }
 
     public function index_action() {
         $this->links = SupportLink::findBySQL("1 ORDER BY `position`, `title`");
-        $this->setInfoBoxImage('infobox/online.jpg');
+        if ($GLOBALS['perm']->have_perm('root')) {
+            $this->i_am_root = true;
+        } else {
+            $this->i_am_root = false;
+        }
+        $this->setInfoBoxImage($this->dispatcher->plugin->getPluginURL().'/assets/images/infobox.png');
         $this->addToInfobox(dgettext('supportplugin', 'Informationen'),
                             dgettext('supportplugin', "Hier stehen wichtige ".
                             "Links zu anderen Systemen oder relevanten ".
@@ -65,9 +79,23 @@ class LinksController extends StudipController {
         $link->title = Request::get('title');
         $link->description = Request::get('description');
         $link->position = intval(Request::get('position'));
-        $link->store();
-        $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
+        if ($link->store()) {
+            $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
+        } else {
+            $this->flash['error'] = dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.');
+        }
         $this->redirect($this->url_for('links'));
+    }
+
+    public function delete_action($id) {
+        CSRFProtection::verifyUnsafeRequest();
+        $link = SupportLink::find($id);
+        $title = $link->title;
+        if ($link->delete()) {
+            $this->flash['success'] = dgettext('supportplugin', sprintf('Der Eintrag "%s" wurde gelöscht.', htmlReady($title)));
+        } else {
+            $this->flash['error'] = dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelöscht werden.', htmlReady($title)));
+        }
     }
 
     // customized #url_for for plugins

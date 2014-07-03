@@ -7,7 +7,7 @@ class Content extends DBMigration
             `link` VARCHAR(2048) NOT NULL DEFAULT '',
             `title` VARCHAR(255) NOT NULL DEFAULT '',
             `description` TEXT NOT NULL DEFAULT '',
-            `position` INT NOT NULL DEFAULT 0,
+            `position` INT NOT NULL DEFAULT 1,
             `mkdate` INT NOT NULL DEFAULT 0,
             `chdate` INT NOT NULL DEFAULT 0,
             PRIMARY KEY (`id`)
