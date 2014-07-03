@@ -1,7 +1,9 @@
 STUDIP.SupportPlugin = {
 
     selectSearchResult: function(id, name) {
-        window.location.href = $('#supportsearch').data('redirect-url')+'/'+id;
+        var textSrc = $('#supportsearch').data('redirect-url').split('?');
+        var url = textSrc[0]+'/'+id;
+        window.location.href = url;
     }
 
 }
