@@ -22,15 +22,6 @@ class LinksController extends StudipController {
         }
         Navigation::activateItem('/support/links');
         $this->set_content_type('text/html;charset=windows-1252');
-        if (Studip\ENV == 'development') {
-            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
-            $js = $this->dispatcher->plugin->getPluginURL().'/assets/supportplugin.js';
-        } else {
-            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
-            $js = $this->getPluginURL().'/assets/supportplugin.min.js';
-        }
-        PageLayout::addStylesheet($css);
-        PageLayout::addScript($js);
     }
 
     public function index_action() {

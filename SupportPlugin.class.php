@@ -48,6 +48,18 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         }
     }
 
+    public function initialize() {
+        if (Studip\ENV == 'development') {
+            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
+            $js = $this->dispatcher->plugin->getPluginURL().'/assets/supportplugin.js';
+        } else {
+            $css = $this->dispatcher->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
+            $js = $this->getPluginURL().'/assets/supportplugin.min.js';
+        }
+        PageLayout::addStylesheet($css);
+        PageLayout::addScript($js);
+    }
+
     /**
      * Plugin name to show in navigation.
      */
