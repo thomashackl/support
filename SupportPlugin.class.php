@@ -84,10 +84,12 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
 
     public static function onEnable($pluginId) {
         parent::onEnable($pluginId);
-        $role = new Role();
-        $role->setRolename("Support");
-        $rid = RolePersistence::saveRole($role);
-        RolePersistence::assignPluginRoles($pluginId, $rid);
+        if (!DBManager::get()->fetchAll("SELECT `roleid` FROM `roles` WHERE `rolename`='Support'")) {
+            $role = new Role();
+            $role->setRolename("Support");
+            $rid = RolePersistence::saveRole($role);
+            RolePersistence::assignPluginRoles($pluginId, $rid);
+        }
     }
 
     public static function onDisable($pluginId) {
