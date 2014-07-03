@@ -27,7 +27,7 @@ class SearchController extends StudipController {
                     ))
                     ->withButton(array('width' => '500'))
                     ->noSelectbox()
-                    ->fireJSFunctionOnSelect('STUDIP.SupportPlugin.selectSearchResult');
+                    ->disableAutoComplete();
         if (Request::get('searchterm_parameter')) {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }
