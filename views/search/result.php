@@ -7,7 +7,6 @@
         <tr>
             <th><?= dgettext('supportplugin', 'Name') ?></th>
             <th><?= dgettext('supportplugin', 'Nutzername') ?></th>
-            <th><?= dgettext('supportplugin', 'Info') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -15,6 +14,7 @@
         <tr data-id="<?= $u->id ?>">
             <td>
                 <a href="<?= URLHelper::getLink('dispatch.php/profile', array('username' => $u->username)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Profil von %s'), htmlReady($u->getFullname()))) ?>">
+                    <?= Avatar::getAvatar($u->id)->getImageTag(Avatar::SMALL); ?>
                     <?= htmlReady($u->getFullname()) ?>
                 </a>
             </td>
@@ -23,7 +23,6 @@
                     <?= htmlReady($u->username) ?>
                 </a>
             </td>
-            <td></td>
         </tr>
         <?php } ?>
     </tbody>
@@ -37,7 +36,6 @@
             <th><?= dgettext('supportplugin', 'Semester') ?></th>
             <th><?= dgettext('supportplugin', 'Nummer') ?></th>
             <th><?= dgettext('supportplugin', 'Name') ?></th>
-            <th><?= dgettext('supportplugin', 'Info') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -46,6 +44,7 @@
             <td><?= htmlReady($c->start_semester->name) ?></td>
             <td>
                 <a href="<?= URLHelper::getLink('seminar_main.php', array('auswahl' => $c->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Veranstaltung %s'), htmlReady($c->name))) ?>">
+                    <?= CourseAvatar::getAvatar($c->id)->getImageTag(Avatar::SMALL); ?>
                     <?= htmlReady($c->veranstaltungsnummer) ?>
                 </a>
             </td>
@@ -54,7 +53,6 @@
                     <?= htmlReady($c->name) ?>
                 </a>
             </td>
-            <td></td>
         </tr>
         <?php } ?>
     </tbody>
@@ -66,7 +64,6 @@
     <thead>
         <tr>
             <th><?= dgettext('supportplugin', 'Name') ?></th>
-            <th><?= dgettext('supportplugin', 'Info') ?></th>
         </tr>
     </thead>
     <tbody>
@@ -74,10 +71,10 @@
         <tr data-id="<?= $i->id ?>">
             <td>
                 <a href="<?= URLHelper::getLink('institut_main.php', array('auswahl' => $i->id)) ?>" title="<?= dgettext('supportplugin', sprintf(_('Zur Einrichtung %s'), htmlReady($i->name))) ?>">
+                    <?= InstituteAvatar::getAvatar($i->id)->getImageTag(Avatar::SMALL); ?>
                     <?= htmlReady($i->name) ?>
                 </a>
             </td>
-            <td></td>
         </tr>
         <?php } ?>
     </tbody>

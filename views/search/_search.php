@@ -5,7 +5,7 @@
         <?= dgettext('supportplugin', 'Semester für Veranstaltungen:') ?>
     </label>
     <select name="semester">
-        <option value="all"><?= dgettext('supportplugin', 'alle') ?></option>
+        <option value=""><?= dgettext('supportplugin', 'alle') ?></option>
         <?php foreach (array_reverse(Semester::getAll()) as $semester) { ?>
         <option value="<?= $semester->id ?>"<?= $semester->id==$selected_semester ? ' selected="selected"' : '' ?>><?= htmlReady($semester->name) ?></option>
         <?php } ?>

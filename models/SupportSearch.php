@@ -151,10 +151,12 @@ class SupportSearch extends SearchType {
                 WHERE (`Name` LIKE :searchterm
                     OR `VeranstaltungsNummer` LIKE :searchterm)";
             if ($contextual_data['semester']) {
-                $semester = Semester::find($contextual_data['semester']);
-                $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
-                $parameters['start'] = $semester->beginn;
-                $parameters['end'] = $semester->ende;
+                if ($contextual_data['semester']) {
+                    $semester = Semester::find($contextual_data['semester']);
+                    $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
+                    $parameters['start'] = $semester->beginn;
+                    $parameters['end'] = $semester->ende;
+                }
             }
             $query .= " ORDER BY `start_time` DESC, `VeranstaltungsNummer`, `Name`";
         } else {
@@ -163,10 +165,12 @@ class SupportSearch extends SearchType {
                 WHERE (`Name` LIKE :searchterm
                     OR `VeranstaltungsNummer` LIKE :searchterm)";
             if ($contextual_data['semester']) {
-                $semester = Semester::find($contextual_data['semester']);
-                $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
-                $parameters['start'] = $semester->beginn;
-                $parameters['end'] = $semester->ende;
+                if ($contextual_data['semester']) {
+                    $semester = Semester::find($contextual_data['semester']);
+                    $query .= " AND ((`start_time`+`duration_time` BETWEEN :start AND :end) OR (`start_time`<= :start AND `duration_time`=-1))";
+                    $parameters['start'] = $semester->beginn;
+                    $parameters['end'] = $semester->ende;
+                }
             }
             $query .= " ORDER BY `start_time` DESC, `Name`";
         }
