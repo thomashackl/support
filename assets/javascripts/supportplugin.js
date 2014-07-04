@@ -5,18 +5,21 @@ STUDIP.SupportPlugin = {
             axis: 'y',
 
             stop: function () {
-                var link_ids = {};
-                link_ids.link_ids = {};
+                var postData = {};
+                postData.link_ids = {};
                 $('#supportlinks').find('div.supportlink').each(function () {
-                    link_ids.link_ids[$(this).attr('id')] = $(this).attr('id');
+                    postData.link_ids[$(this).attr('id')] = $(this).attr('id');
                 });
+
+                var url = $('#supportlinks').data('sort-url');
+                url = url.substring(1, url.length-1);
 
                 $.ajax({
                     type: 'POST',
-                    url: $('#supportlinks').data('sort-url'),
-                    data: link_ids
+                    url: url,
+                    data: postData
                 });
-                location.reload();
+
             }
         });
     },

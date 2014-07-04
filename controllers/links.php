@@ -90,7 +90,7 @@ class LinksController extends StudipController {
 
     public function sort_action() {
         $i = 1;
-        foreach (Request::optionArray('link_ids') as $id) {
+        foreach (Request::getArray('link_ids') as $id) {
             $l = SupportLink::find($id);
             $l->position = $i;
             $l->store();
