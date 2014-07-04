@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 14:56+0200\n"
-"PO-Revision-Date: 2014-06-27 13:33+0200\n"
+"PO-Revision-Date: 2014-07-04 10:49+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English <http://example.com/weblate/projects/studip/"
-"supportplugin/en/>\n"
+"Language-Team: English "
+"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -21,47 +21,50 @@ msgstr ""
 
 #: controllers/links.php:35 controllers/search.php:37
 msgid "Informationen"
-msgstr ""
+msgstr "Information"
 
 #: controllers/links.php:36
 msgid ""
 "Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
 "Inhalten."
 msgstr ""
+"This is a list of important links to other systems or relevant Stud.IP "
+"content."
 
 #: controllers/links.php:41
 msgid "Aktionen"
-msgstr ""
+msgstr "Actions"
 
 #: controllers/links.php:44 controllers/links.php:46 controllers/links.php:57
 msgid "Link hinzufügen"
-msgstr ""
+msgstr "Add link"
 
 #: controllers/links.php:57
 msgid "Link bearbeiten"
-msgstr ""
+msgstr "Edit link"
 
 #: controllers/links.php:74
 msgid "Die Änderungen wurden gespeichert."
-msgstr ""
+msgstr "The changes have been saved."
 
 #: controllers/links.php:76
 msgid "Die Änderungen konnten nicht gespeichert werden."
-msgstr ""
+msgstr "The changes could not be saved."
 
 #: controllers/search.php:26
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
-msgstr ""
+msgstr "Here you can search for courses, persons and institutes"
 
 #: controllers/search.php:38
 msgid ""
 "Die Suche findet sowohl Personen als auch Veranstaltungen und Einrichtungen, "
 "unabhängig von den Sichtbarkeitseinstellungen."
 msgstr ""
+"The search will find persons, courses and institutes, even invisible ones."
 
 #: models/SupportSearch.php:25
 msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
-msgstr ""
+msgstr "Search for courses, persons and institutes"
 
 #: SupportPlugin.class.php:38
 msgid "Supportfunktionen"
@@ -73,7 +76,7 @@ msgstr "Search"
 
 #: SupportPlugin.class.php:43
 msgid "Wichtige Links"
-msgstr ""
+msgstr "Important links"
 
 #: SupportPlugin.class.php:67
 msgid "Support"
@@ -81,101 +84,100 @@ msgstr "Support"
 
 #: views/links/edit.php:4
 msgid "Linkziel"
-msgstr ""
+msgstr "Link target"
 
 #: views/links/edit.php:8
 msgid "Titel des Links"
-msgstr ""
+msgstr "Link title"
 
 #: views/links/edit.php:12
 msgid "Beschreibungstext"
-msgstr ""
+msgstr "Descriptional text"
 
 #: views/links/edit.php:16
 msgid "Reihenfolge"
-msgstr ""
+msgstr "Sort order"
 
 #: views/links/edit.php:24
 msgid "Speichern"
-msgstr ""
+msgstr "Save"
 
 #: views/links/edit.php:25
 msgid "Abbrechen"
-msgstr ""
+msgstr "Cancel"
 
 #: views/links/index.php:15
 msgid "Eintrag bearbeiten"
-msgstr ""
+msgstr "Edit entry"
 
 #: views/links/index.php:17
 msgid "Eintrag löschen"
-msgstr ""
+msgstr "Delete entry"
 
 #: views/links/index.php:26
 msgid "Es sind keine Links vorhanden."
-msgstr ""
+msgstr "No links have been found."
 
 #: views/search/_search.php:5
 msgid "Semester für Veranstaltungen:"
-msgstr ""
+msgstr "Semester for searching courses:"
 
 #: views/search/_search.php:8
 msgid "alle"
-msgstr ""
+msgstr "all"
 
 #: views/search/result.php:1
-#, fuzzy
 msgid "Suchergebnisse"
-msgstr "Search"
+msgstr "Search results"
 
 #: views/search/result.php:5
 msgid "Personen"
-msgstr ""
+msgstr "Persons"
 
 #: views/search/result.php:8 views/search/result.php:39
 #: views/search/result.php:68
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: views/search/result.php:9
 msgid "Nutzername"
-msgstr ""
+msgstr "Username"
 
 #: views/search/result.php:10 views/search/result.php:40
 #: views/search/result.php:69
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 #: views/search/result.php:17 views/search/result.php:22
 #, php-format
 msgid "Profil von %s"
-msgstr ""
+msgstr "Profile of %s"
 
 #: views/search/result.php:34
 msgid "Veranstaltungen"
-msgstr ""
+msgstr "Courses"
 
 #: views/search/result.php:37
 msgid "Semester"
-msgstr ""
+msgstr "Semester"
 
 #: views/search/result.php:38
 msgid "Nummer"
-msgstr ""
+msgstr "Number"
 
 #: views/search/result.php:48 views/search/result.php:53
 #, php-format
 msgid "Zur Veranstaltung %s"
-msgstr ""
+msgstr "To course %s"
 
 #: views/search/result.php:65
 msgid "Einrichtungen"
-msgstr ""
+msgstr "Institutes"
 
 #: views/search/result.php:76
 #, php-format
 msgid "Zur Einrichtung %s"
-msgstr ""
+msgstr "To institute %s"
 
 #~ msgid "Suchbegriff:"
 #~ msgstr "Search term:"
