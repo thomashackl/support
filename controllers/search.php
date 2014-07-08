@@ -55,6 +55,7 @@ class SearchController extends StudipController {
         CSRFProtection::verifyUnsafeRequest();
         $this->selected_semester = Request::option('semester');
         $search = new SupportSearch();
+        $this->searchterm = Request::get('searchterm_parameter');
         if (Request::option('searchterm')) {
             $result = $search->getResultsById(Request::option('searchterm'), get_object_type(Request::option('searchterm')));
         } else if (Request::get('searchterm_parameter')) {
