@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 14:56+0200\n"
+"POT-Creation-Date: 2014-07-08 12:44+0200\n"
 "PO-Revision-Date: 2014-07-04 10:49+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English "
-"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
+"Language-Team: English <http://example.com/weblate/projects/studip/"
+"supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -106,15 +106,25 @@ msgstr "Save"
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: views/links/index.php:15
+#: views/links/index.php:28
 msgid "Eintrag bearbeiten"
 msgstr "Edit entry"
 
-#: views/links/index.php:17
+#: views/links/index.php:30
 msgid "Eintrag löschen"
 msgstr "Delete entry"
 
-#: views/links/index.php:26
+#: views/links/index.php:33
+#, fuzzy
+msgid "Eintrag hochsortieren"
+msgstr "Delete entry"
+
+#: views/links/index.php:37
+#, fuzzy
+msgid "Eintrag runtersortieren"
+msgstr "Edit entry"
+
+#: views/links/index.php:51
 msgid "Es sind keine Links vorhanden."
 msgstr "No links have been found."
 
@@ -130,47 +140,42 @@ msgstr "all"
 msgid "Suchergebnisse"
 msgstr "Search results"
 
-#: views/search/result.php:5
+#: views/search/result.php:8
 msgid "Personen"
 msgstr "Persons"
 
-#: views/search/result.php:8 views/search/result.php:39
-#: views/search/result.php:68
+#: views/search/result.php:11 views/search/result.php:41
+#: views/search/result.php:69
 msgid "Name"
 msgstr "Name"
 
-#: views/search/result.php:9
+#: views/search/result.php:12
 msgid "Nutzername"
 msgstr "Username"
 
-#: views/search/result.php:10 views/search/result.php:40
-#: views/search/result.php:69
-msgid "Info"
-msgstr "Info"
-
-#: views/search/result.php:17 views/search/result.php:22
+#: views/search/result.php:19 views/search/result.php:25
 #, php-format
 msgid "Profil von %s"
 msgstr "Profile of %s"
 
-#: views/search/result.php:34
+#: views/search/result.php:36
 msgid "Veranstaltungen"
 msgstr "Courses"
 
-#: views/search/result.php:37
+#: views/search/result.php:39
 msgid "Semester"
 msgstr "Semester"
 
-#: views/search/result.php:38
+#: views/search/result.php:40
 msgid "Nummer"
 msgstr "Number"
 
-#: views/search/result.php:48 views/search/result.php:53
+#: views/search/result.php:49 views/search/result.php:55
 #, php-format
 msgid "Zur Veranstaltung %s"
 msgstr "To course %s"
 
-#: views/search/result.php:65
+#: views/search/result.php:66
 msgid "Einrichtungen"
 msgstr "Institutes"
 
@@ -178,6 +183,9 @@ msgstr "Institutes"
 #, php-format
 msgid "Zur Einrichtung %s"
 msgstr "To institute %s"
+
+#~ msgid "Info"
+#~ msgstr "Info"
 
 #~ msgid "Suchbegriff:"
 #~ msgstr "Search term:"
