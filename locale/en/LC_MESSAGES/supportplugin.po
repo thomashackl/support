@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-08 12:53+0200\n"
-"PO-Revision-Date: 2014-07-04 10:49+0200\n"
+"PO-Revision-Date: 2014-07-08 13:05+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English <http://example.com/weblate/projects/studip/"
-"supportplugin/en/>\n"
+"Language-Team: English "
+"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -115,14 +115,12 @@ msgid "Eintrag löschen"
 msgstr "Delete entry"
 
 #: views/links/index.php:33
-#, fuzzy
 msgid "Eintrag hochsortieren"
-msgstr "Delete entry"
+msgstr "Sort entry up"
 
 #: views/links/index.php:37
-#, fuzzy
 msgid "Eintrag runtersortieren"
-msgstr "Edit entry"
+msgstr "Sort entry down"
 
 #: views/links/index.php:51
 msgid "Es sind keine Links vorhanden."
@@ -143,7 +141,7 @@ msgstr "Search results"
 #: views/search/result.php:4
 #, php-format
 msgid "Es wurden keine Ergebnisse für den Suchbegriff \"%s\" gefunden."
-msgstr ""
+msgstr "No results were found for query \"%s\"."
 
 #: views/search/result.php:8
 msgid "Personen"
