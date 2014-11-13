@@ -35,7 +35,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             // Localization
             bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
             $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), 'search'));
-            $navigation->setImage($this->getPluginURL().'/assets/images/support.png', array('title' => _('Supportfunktionen'), "@2x" => TRUE));
+            $navigation->setImage($this->getPluginURL().'/assets/images/support.png', array('title' => _('Supportfunktionen')));
             $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
             $searchNavi->setImage('icons/16/white/search.png');
             $searchNavi->setActiveImage('icons/16/black/search.png');
@@ -44,6 +44,10 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             $linksNavi->setImage('icons/16/white/link-intern.png');
             $linksNavi->setActiveImage('icons/16/black/link-intern.png');
             $navigation->addSubnavigation('links', $linksNavi);
+            $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+            $faqNavi->setImage('icons/16/white/question-circle.png');
+            $faqNavi->setActiveImage('icons/16/black/question-circle.png');
+            $navigation->addSubnavigation('faq', $faqNavi);
             Navigation::addItem('/support', $navigation);
         }
     }
