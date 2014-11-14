@@ -15,6 +15,7 @@ class SearchController extends StudipController {
         $this->current_action = $action;
         $this->validate_args($args);
         $this->flash = Trails_Flash::instance();
+        $this->plugin = $this->dispatcher->plugin;
         if (Request::isXhr()) {
             $this->set_layout(null);
         } else {
@@ -33,13 +34,6 @@ class SearchController extends StudipController {
         }
         $this->search = $this->search->render();
         $this->set_content_type('text/html;charset=windows-1252');
-        $this->setInfoBoxImage($this->dispatcher->plugin->getPluginURL().'/assets/images/infobox.png');
-        $this->addToInfobox(dgettext('supportplugin', 'Informationen'),
-                            dgettext('supportplugin', 'Die Suche findet sowohl '.
-                            'Personen als auch Veranstaltungen und '.
-                            'Einrichtungen, unabhängig von den '.
-                            'Sichtbarkeitseinstellungen.'),
-                            'icons/16/black/search.png');
     }
 
     public function index_action() {

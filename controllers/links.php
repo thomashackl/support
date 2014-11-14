@@ -15,6 +15,7 @@ class LinksController extends StudipController {
         $this->current_action = $action;
         $this->validate_args($args);
         $this->flash = Trails_Flash::instance();
+        $this->plugin = $this->dispatcher->plugin;
         if (Request::isXhr()) {
             $this->set_layout(null);
         } else {
@@ -30,22 +31,6 @@ class LinksController extends StudipController {
             $this->i_am_root = true;
         } else {
             $this->i_am_root = false;
-        }
-        $this->setInfoBoxImage($this->dispatcher->plugin->getPluginURL().'/assets/images/infobox.png');
-        $this->addToInfobox(dgettext('supportplugin', 'Informationen'),
-                            dgettext('supportplugin', "Hier stehen wichtige ".
-                            "Links zu anderen Systemen oder relevanten ".
-                            "Stud.IP-Inhalten."),
-                            'icons/16/black/info.png');
-        if ($GLOBALS['perm']->have_perm('root')) {
-            $this->addToInfobox(dgettext('supportplugin', 'Aktionen'),
-                                '<a href="'.$this->url_for('links/edit').
-                                '" rel="lightbox" title="'.
-                                dgettext('supportplugin', "Link hinzufügen").
-                                '">'.
-                                dgettext('supportplugin', "Link hinzufügen").
-                                '</a>',
-                                'icons/16/blue/add.png');
         }
     }
 

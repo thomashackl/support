@@ -28,6 +28,49 @@ class SupportFaq extends SimpleORMap {
     }
 
     /**
+     * Gets all FAQs (matching the given search term, if given)
+     *
+     * @param int $limit show only given number of entries
+     * @param string $searchterm only get FAQs containing this search term
+     * @param bool $search_in_question search for term in question
+     * @param bool $search_in_answer search for term in answer
+     * @param string $language search FAQs with the given language
+     * @return array
+     */
+    public static function getFaqs($limit=0, $searchterm='', $search_in_question=false, $search_in_answer=false, $language='de_DE') {
+        if ($searchterm) {
+            $query = "SELECT f.`id`
+                FROM `supportplugin_faq` f
+                    JOIN `supportplugin_faq_i18n` i ON (f.`id`=i.`faq_id` AND i.`lang`=:lang)";
+            $where = "";
+            if ($search_in_question) {
+                $where .= " WHERE i.`question` LIKE :searchterm";
+            }
+            if ($search_in_answer) {
+                if ($where) {
+                    $where .= " OR ";
+                } else {
+                    $where .= " WHERE ";
+                }
+                $where .= "i.`answer` LIKE :searchterm";
+            }
+            $order = " ORDER BY f.`position`";
+            $limit = "";
+            if ($limit) {
+                $limit = intval($limit);
+            }
+            $query .= $where.$order.$limit;
+            $faqs = array();
+            foreach (DBManager::get()->fetchFirst($query, array('searchterm' => '%'.$searchterm.'%', 'lang' => $language)) as $id) {
+                $faqs[] = SupportFaq::find($id);
+            }
+            return $faqs;
+        } else {
+            return self::findBySQL("1 ORDER BY `position`");
+        }
+    }
+
+    /**
      * Fetches the FAQ translation for the given language. If no translation
      * for the given language is found, the values for the system default
      * language are returned, or null if the $strict parameter is set.

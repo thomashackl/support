@@ -15,6 +15,7 @@ class FaqController extends StudipController {
         $this->current_action = $action;
         $this->validate_args($args);
         $this->flash = Trails_Flash::instance();
+        $this->plugin = $this->dispatcher->plugin;
         if (Request::isXhr()) {
             $this->set_layout(null);
         } else {
@@ -25,25 +26,21 @@ class FaqController extends StudipController {
     }
 
     public function index_action() {
-        $this->faqs = SupportFaq::findBySQL("1 ORDER BY `position`");
-        if ($GLOBALS['perm']->have_perm('root')) {
-            $this->i_am_root = true;
-        } else {
-            $this->i_am_root = false;
+        $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
+            Request::option('search_question'), Request::option('search_answer'),
+            $GLOBALS['user']->preferred_language);
+        $support = false;
+        $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
+        foreach ($roles as $role) {
+            if ($role->rolename == 'Support') {
+                $support = true;
+                break;
+            }
         }
-        $this->setInfoBoxImage($this->dispatcher->plugin->getPluginURL().'/assets/images/infobox.png');
-        $this->addToInfobox(dgettext('supportplugin', 'Informationen'),
-            dgettext('supportplugin', "Häufig gestellte Fragen und ihre ".
-                "Antworten."), 'icons/16/black/info.png');
-        if ($GLOBALS['perm']->have_perm('root')) {
-            $this->addToInfobox(dgettext('supportplugin', 'Aktionen'),
-                '<a href="'.$this->url_for('faq/edit').
-                '" data-dialog="size=auto;buttons=false"  title="'.
-                dgettext('supportplugin', "Frage/Antwort hinzufügen").
-                '">'.
-                dgettext('supportplugin', "Frage/Antwort hinzufügen").
-                '</a>',
-                'icons/16/blue/add.png');
+        if ($GLOBALS['perm']->have_perm('root') || $support) {
+            $this->editor = true;
+        } else {
+            $this->editor = false;
         }
     }
 

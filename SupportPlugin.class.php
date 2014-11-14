@@ -30,12 +30,14 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
                 break;
             }
         }
+        parent::__construct();
+        //echo 'HERE!<br/>';
+        // Localization
+        bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
+        $active = $GLOBALS['perm']->have_perm('root') || $support ? 'search' : 'faq';
+        $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), $active));
+        $navigation->setImage($this->getPluginURL().'/assets/images/support.png', array('title' => _('Support')));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
-            parent::__construct();
-            // Localization
-            bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
-            $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), 'search'));
-            $navigation->setImage($this->getPluginURL().'/assets/images/support.png', array('title' => _('Supportfunktionen')));
             $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
             $searchNavi->setImage('icons/16/white/search.png');
             $searchNavi->setActiveImage('icons/16/black/search.png');
@@ -44,12 +46,12 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             $linksNavi->setImage('icons/16/white/link-intern.png');
             $linksNavi->setActiveImage('icons/16/black/link-intern.png');
             $navigation->addSubnavigation('links', $linksNavi);
-            $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
-            $faqNavi->setImage('icons/16/white/question-circle.png');
-            $faqNavi->setActiveImage('icons/16/black/question-circle.png');
-            $navigation->addSubnavigation('faq', $faqNavi);
-            Navigation::addItem('/support', $navigation);
         }
+        $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+        $faqNavi->setImage('icons/16/white/question-circle.png');
+        $faqNavi->setActiveImage('icons/16/black/question-circle.png');
+        $navigation->addSubnavigation('faq', $faqNavi);
+        Navigation::addItem('/support', $navigation);
     }
 
     public function initialize() {
@@ -88,12 +90,15 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
 
     public static function onEnable($pluginId) {
         parent::onEnable($pluginId);
+        // Create "Support" role if necessary and assign plugin.
         if (!DBManager::get()->fetchAll("SELECT `roleid` FROM `roles` WHERE `rolename`='Support'")) {
             $role = new Role();
             $role->setRolename("Support");
             $rid = RolePersistence::saveRole($role);
-            RolePersistence::assignPluginRoles($pluginId, $rid);
+            RolePersistence::assignPluginRoles($pluginId, array($rid));
         }
+        // Assign plugin to "nobody" role.
+        RolePersistence::assignPluginRoles($pluginId, array(7));
     }
 
     public static function onDisable($pluginId) {

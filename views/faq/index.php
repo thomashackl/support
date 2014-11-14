@@ -16,9 +16,9 @@ if ($faqs) {
 ?>
 <section class="contentbox" data-sort-url="'<?= $url ?>'">
     <header>
-        <h1><?= dgettext('supportplugin', 'Häufig gestellte Fragen.') ?></h1>
+        <h1><?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?></h1>
         <nav>
-            <? if ($i_am_root) { ?>
+            <? if ($editor) { ?>
             <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto;buttons=false" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
                 <?= Assets::img('icons/16/blue/add.png'); ?>
             </a>
@@ -36,7 +36,7 @@ if ($faqs) {
                     <?= htmlReady($translation->question); ?>
                 </a>
             </h1>
-            <? if ($i_am_root) { ?>
+            <? if ($editor) { ?>
             <nav>
                 <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto;buttons=false" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
                     <?= Assets::img('icons/16/blue/edit.png'); ?>
@@ -60,3 +60,21 @@ if ($faqs) {
 STUDIP.SupportPlugin.init();
 //-->
 </script>
+<?php
+$sidebar = Sidebar::get();
+$sidebar->setImage($plugin->getPluginURL().'/assets/images/sidebar-faq.png');
+$search = new SearchWidget(URLHelper::getLink('?'));
+$search->addNeedle(_('Fragen/Antworten durchsuchen'), 'search', true);
+$search->addFilter(_('Frage'), 'search_question');
+$search->addFilter(_('Antwort'), 'search_answer');
+$sidebar->addWidget($search);
+if ($editor) {
+    $actions = new ActionsWidget();
+    $actions->addLink(
+        _("Frage/Antwort hinzufügen"),
+        $controller->url_for('faq/edit'),
+        'icons/16/blue/add.png',
+        array('data-dialog' => 'size=auto;buttons=false')
+    );
+    $sidebar->addWidget($actions);
+}
