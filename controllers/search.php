@@ -21,6 +21,12 @@ class SearchController extends StudipController {
         } else {
             $this->set_layout($GLOBALS['template_factory']->open('layouts/base'));
         }
+        if (Studip\ENV == 'development') {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
+        } else {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
+        }
+        PageLayout::addStylesheet($css);
         Navigation::activateItem('/support/search');
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
                     ->setAttributes(array(

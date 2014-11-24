@@ -21,17 +21,28 @@ class LinksController extends StudipController {
         } else {
             $this->set_layout($GLOBALS['template_factory']->open('layouts/base'));
         }
+        if ($GLOBALS['perm']->have_perm('root')) {
+            $this->i_am_root = true;
+        } else {
+            $this->i_am_root = false;
+        }
+        if (Studip\ENV == 'development') {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
+            $js = $this->plugin->getPluginURL().'/assets/javascripts/supportplugin.js';
+        } else {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
+            $js = $this->plugin->getPluginURL().'/assets/javascripts/supportplugin.min.js';
+        }
+        PageLayout::addStylesheet($css);
+        if ($this->i_am_root) {
+            PageLayout::addScript($js);
+        }
         Navigation::activateItem('/support/links');
         $this->set_content_type('text/html;charset=windows-1252');
     }
 
     public function index_action() {
         $this->links = SupportLink::findBySQL("1 ORDER BY `position`, `title`");
-        if ($GLOBALS['perm']->have_perm('root')) {
-            $this->i_am_root = true;
-        } else {
-            $this->i_am_root = false;
-        }
     }
 
     public function edit_action($id='') {

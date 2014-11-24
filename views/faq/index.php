@@ -54,13 +54,17 @@ if ($faqs) {
 <section>
     <?= dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen vorhanden.') ?>
 </section>
-<?php } ?>
+<?php
+}
+if ($editor) {
+?>
 <script type="text/javascript">
-//<!--
-STUDIP.SupportPlugin.init();
-//-->
+    //<!--
+    STUDIP.SupportPlugin.init();
+    //-->
 </script>
 <?php
+}
 $sidebar = Sidebar::get();
 $sidebar->setImage($plugin->getPluginURL().'/assets/images/sidebar-faq.png');
 $search = new SearchWidget(URLHelper::getLink('?'));

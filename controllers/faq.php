@@ -21,6 +21,22 @@ class FaqController extends StudipController {
         } else {
             $this->set_layout($GLOBALS['template_factory']->open('layouts/base'));
         }
+        if ($GLOBALS['perm']->have_perm('root') || $support) {
+            $this->editor = true;
+        } else {
+            $this->editor = false;
+        }
+        if (Studip\ENV == 'development') {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
+            $js = $this->plugin->getPluginURL().'/assets/javascripts/supportplugin.js';
+        } else {
+            $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.min.css';
+            $js = $this->plugin->getPluginURL().'/assets/javascripts/supportplugin.min.js';
+        }
+        PageLayout::addStylesheet($css);
+        if ($this->editor) {
+            PageLayout::addScript($js);
+        }
         Navigation::activateItem('/support/faq');
         $this->set_content_type('text/html;charset=windows-1252');
     }
@@ -36,11 +52,6 @@ class FaqController extends StudipController {
                 $support = true;
                 break;
             }
-        }
-        if ($GLOBALS['perm']->have_perm('root') || $support) {
-            $this->editor = true;
-        } else {
-            $this->editor = false;
         }
     }
 
