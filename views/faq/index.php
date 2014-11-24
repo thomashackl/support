@@ -14,7 +14,7 @@ if ($faqs) {
         $url = substr($url, 0, $pos);
     }
 ?>
-<section class="contentbox" data-sort-url="'<?= $url ?>'">
+<section class="contentbox" id="supportfaqs" data-sort-url="'<?= $url ?>'">
     <header>
         <h1><?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?></h1>
         <nav>

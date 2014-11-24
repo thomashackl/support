@@ -55,9 +55,9 @@ class SupportFaq extends SimpleORMap {
                 $where .= "i.`answer` LIKE :searchterm";
             }
             $order = " ORDER BY f.`position`";
-            $limit = "";
+            $limit_str = "";
             if ($limit) {
-                $limit = intval($limit);
+                $limit_str = " LIMIT ".intval($limit);
             }
             $query .= $where.$order.$limit;
             $faqs = array();
@@ -66,7 +66,11 @@ class SupportFaq extends SimpleORMap {
             }
             return $faqs;
         } else {
-            return self::findBySQL("1 ORDER BY `position`");
+            $limit_str = "";
+            if ($limit) {
+                $limit_str = " LIMIT ".intval($limit);
+            }
+            return self::findBySQL("1 ORDER BY `position`".$limit_str);
         }
     }
 
@@ -82,8 +86,9 @@ class SupportFaq extends SimpleORMap {
      */
     public function getTranslationByLanguage($lang, $strict = false) {
         $translation = null;
+        $default = null;
         foreach ($this->translations as $t) {
-            if ($t->lang == $GLOBALS['DEFAULT_LANGUAGE']) {
+            if ($t->lang == $GLOBALS['DEFAULT_LANGUAGE'] && !$strict) {
                 $default = $t;
             } else if ($t->lang == $lang) {
                 $translation = $t;

@@ -22,6 +22,27 @@ STUDIP.SupportPlugin = {
 
             }
         });
+        $('#supportfaqs').sortable({
+            axis: 'y',
+
+            stop: function () {
+                var postData = {};
+                postData.faq_ids = {};
+                $('#supportfaqs').find('article').each(function () {
+                    postData.faq_ids[$(this).attr('class')] = $(this).attr('class');
+                });
+
+                var url = $('#supportfaqs').data('sort-url');
+                url = url.substring(1, url.length-1);
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: postData
+                });
+
+            }
+        });
     },
 
     selectSearchResult: function(id, name) {

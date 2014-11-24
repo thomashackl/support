@@ -27,8 +27,8 @@ class FaqController extends StudipController {
 
     public function index_action() {
         $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
-            Request::option('search_question'), Request::option('search_answer'),
-            $GLOBALS['user']->preferred_language);
+            Request::get('search_question'), Request::get('search_answer'),
+            $GLOBALS['user']->preferred_language ?: $_SESSION['_language']);
         $support = false;
         $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
         foreach ($roles as $role) {
@@ -59,22 +59,24 @@ class FaqController extends StudipController {
             $faq = SupportFaq::find(Request::option('faq_id'));
         } else {
             $faq = new SupportFaq();
+            $maxpos = DBManager::get()->fetchFirst("SELECT MAX(`position`) FROM `supportplugin_faq`");
+            $maxpos = intval($maxpos[0]);
+            $faq->position = $maxpos + 1;
         }
-        $maxpos = DBManager::get()->fetchFirst("SELECT MAX(`position`) FROM `supportplugin_faq`");
-        $maxpos = intval($maxpos[0]);
-        $faq->position = $maxpos+1;
-        $faq->translations = array();
-        foreach (Request::getArray('translation') as $translation) {
+        $translations = array();
+        foreach (Request::getArray('translation') as $lang => $translation) {
             if ($translation['id']) {
                 $t = SupportFaqTranslation::find($translation['id']);
             } else {
                 $t = new SupportFaqTranslation();
             }
-            $t->lang = $translation['lang'];
+            $t->faq_id = Request::option('faq_id');
+            $t->lang = $lang;
             $t->question = $translation['question'];
             $t->answer = $translation['answer'];
-            $faq->translations[] = $t;
+            $translations[] = $t;
         }
+        $faq->translations = SimpleORMapCollection::createFromArray($translations);
         if ($faq->store()) {
             $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
         } else {

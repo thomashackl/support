@@ -19,14 +19,9 @@
             <?= dgettext('supportplugin', 'Antwort') ?>
             <textarea cols="75" rows="4" name="translation[<?= $key ?>][answer]"><?= $t ? htmlReady($t->answer) : '' ?></textarea>
         </label>
-        <?php
-        if ($t) {
-        ?>
-        <input type="hidden" name="translation[<?= $key ?>][id]" value="<?= $t->id ?>"/>
-        <?php
-        }
-        ?>
-        <input type="hidden" name="translation[<?= $key ?>][lang]" value="<?= $key ?>"/>
+        <?php if ($t->id) { ?>
+            <input type="hidden" name="translation[<?= $key ?>][id]" value="<?= $t->id ?>"/>
+        <?php } ?>
     </fieldset>
     <?php } ?>
     <?= CSRFProtection::tokenTag() ?>

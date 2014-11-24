@@ -84,6 +84,18 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         $dispatcher->dispatch($unconsumed_path);
     }
 
+    public function getTopFaqs($number) {
+        require_once(realpath(dirname(__FILE__).'/models/SupportFaqTranslation.php'));
+        require_once(realpath(dirname(__FILE__).'/models/SupportFaq.php'));
+        $f = new Flexi_TemplateFactory(realpath(dirname(__FILE__).'/views/faq'));
+        $t = $f->open('top');
+        $t->set_attribute('language', $GLOBALS['user']->preferred_language ?: $_SESSION['_language']);
+        $t->set_attribute('faqs', SupportFaq::getFaqs($number, '', false, false,
+            $this->language));
+        $t->set_attribute('allfaq', URLHelper::getURL('plugins.php/supportplugin/faq'));
+        return $t->render();
+    }
+
     private function setupAutoload() {
         StudipAutoloader::addAutoloadPath(realpath(dirname(__FILE__).'/models'));
     }
