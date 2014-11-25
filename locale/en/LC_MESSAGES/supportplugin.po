@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-08 12:53+0200\n"
+"POT-Creation-Date: 2014-11-25 10:41+0100\n"
 "PO-Revision-Date: 2014-11-24 13:07+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English "
-"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
+"Language-Team: English <http://example.com/weblate/projects/studip/"
+"supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -19,69 +19,94 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 1.10-dev\n"
 
-#: controllers/links.php:35 controllers/search.php:37
-msgid "Informationen"
-msgstr "Information"
+#: controllers/faq.php:63 views/faq/index.php:41
+#, fuzzy
+msgid "Frage/Antwort bearbeiten"
+msgstr "Edit entry"
 
-#: controllers/links.php:36
-msgid ""
-"Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
-"Inhalten."
-msgstr ""
-"This is a list of important links to other systems or relevant Stud.IP "
-"content."
-
-#: controllers/links.php:41
-msgid "Aktionen"
-msgstr "Actions"
-
-#: controllers/links.php:44 controllers/links.php:46 controllers/links.php:57
-msgid "Link hinzufügen"
+#: controllers/faq.php:63 views/faq/index.php:22 views/faq/index.php:78
+#, fuzzy
+msgid "Frage/Antwort hinzufügen"
 msgstr "Add new link"
 
-#: controllers/links.php:57
-msgid "Link bearbeiten"
-msgstr "Edit link"
-
-#: controllers/links.php:74
+#: controllers/faq.php:92 controllers/links.php:70
 msgid "Die Änderungen wurden gespeichert."
 msgstr "The changes have been saved."
 
-#: controllers/links.php:76
+#: controllers/faq.php:94 controllers/links.php:72
 msgid "Die Änderungen konnten nicht gespeichert werden."
 msgstr "The changes could not be saved."
 
-#: controllers/search.php:26
+#: controllers/faq.php:102
+#, fuzzy
+msgid "Der Eintrag wurde gelöscht."
+msgstr "The changes have been saved."
+
+#: controllers/faq.php:104
+#, fuzzy
+msgid "Der Eintrag konnte nicht gelöscht werden."
+msgstr "The changes could not be saved."
+
+#: controllers/links.php:53
+msgid "Link bearbeiten"
+msgstr "Edit link"
+
+#: controllers/links.php:53 views/links/index.php:64
+msgid "Link hinzufügen"
+msgstr "Add new link"
+
+#: controllers/search.php:33
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
 msgstr "Search here for courses, people or organisational units"
-
-#: controllers/search.php:38
-msgid ""
-"Die Suche findet sowohl Personen als auch Veranstaltungen und Einrichtungen, "
-"unabhängig von den Sichtbarkeitseinstellungen."
-msgstr ""
-"This search finds all people, courses and organisational units, regardless "
-"of visibility settings."
 
 #: models/SupportSearch.php:25
 msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
 msgstr "Search for courses, people or organisational units"
 
-#: SupportPlugin.class.php:38
-msgid "Supportfunktionen"
-msgstr "Support functions"
+#: SupportPlugin.class.php:39 SupportPlugin.class.php:61
+msgid "Support"
+msgstr "Support"
 
-#: SupportPlugin.class.php:39 views/search/index.php:1
+#: SupportPlugin.class.php:41 views/search/index.php:1
 msgid "Suche"
 msgstr "Search"
 
-#: SupportPlugin.class.php:43
+#: SupportPlugin.class.php:45
 msgid "Wichtige Links"
 msgstr "Important links"
 
-#: SupportPlugin.class.php:67
-msgid "Support"
-msgstr "Support"
+#: SupportPlugin.class.php:50 views/faq/index.php:19 views/faq/top.php:4
+msgid "Häufig gestellte Fragen"
+msgstr ""
+
+#: views/faq/edit.php:15 views/faq/index.php:72
+msgid "Frage"
+msgstr ""
+
+#: views/faq/edit.php:19 views/faq/index.php:73
+msgid "Antwort"
+msgstr ""
+
+#: views/faq/edit.php:32 views/links/edit.php:24
+msgid "Speichern"
+msgstr "Save"
+
+#: views/faq/edit.php:33 views/links/edit.php:25
+msgid "Abbrechen"
+msgstr "Cancel"
+
+#: views/faq/index.php:55
+#, fuzzy
+msgid "Es sind keine häufig gestellten Fragen vorhanden."
+msgstr "No links have been found."
+
+#: views/faq/index.php:71
+msgid "Fragen/Antworten durchsuchen"
+msgstr ""
+
+#: views/faq/top.php:25
+msgid "Alle häufig gestellten Fragen anzeigen"
+msgstr ""
 
 #: views/links/edit.php:4
 msgid "Linkziel"
@@ -98,14 +123,6 @@ msgstr "Description"
 #: views/links/edit.php:16
 msgid "Reihenfolge"
 msgstr "Sort order"
-
-#: views/links/edit.php:24
-msgid "Speichern"
-msgstr "Save"
-
-#: views/links/edit.php:25
-msgid "Abbrechen"
-msgstr "Cancel"
 
 #: views/links/index.php:28
 msgid "Eintrag bearbeiten"
@@ -187,6 +204,29 @@ msgstr "Organisational units"
 #, php-format
 msgid "Zur Einrichtung %s"
 msgstr "Go to organisational unit %s"
+
+#~ msgid "Informationen"
+#~ msgstr "Information"
+
+#~ msgid ""
+#~ "Hier stehen wichtige Links zu anderen Systemen oder relevanten Stud.IP-"
+#~ "Inhalten."
+#~ msgstr ""
+#~ "This is a list of important links to other systems or relevant Stud.IP "
+#~ "content."
+
+#~ msgid "Aktionen"
+#~ msgstr "Actions"
+
+#~ msgid ""
+#~ "Die Suche findet sowohl Personen als auch Veranstaltungen und "
+#~ "Einrichtungen, unabhängig von den Sichtbarkeitseinstellungen."
+#~ msgstr ""
+#~ "This search finds all people, courses and organisational units, "
+#~ "regardless of visibility settings."
+
+#~ msgid "Supportfunktionen"
+#~ msgstr "Support functions"
 
 #~ msgid "Info"
 #~ msgstr "Info"
