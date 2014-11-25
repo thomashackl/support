@@ -44,7 +44,7 @@ class FaqController extends StudipController {
     public function index_action() {
         $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
             Request::get('search_question'), Request::get('search_answer'),
-            $GLOBALS['user']->preferred_language ?: $_SESSION['_language']);
+            $GLOBALS['user']->id != 'nobody' ? $GLOBALS['user']->preferred_language : $_SESSION['_language']);
         $support = false;
         $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
         foreach ($roles as $role) {

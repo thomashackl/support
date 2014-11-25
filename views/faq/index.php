@@ -27,7 +27,7 @@ if ($faqs) {
     </header>
     <?php
     foreach ($faqs as $f) {
-        $translation = $f->getTranslationByLanguage($GLOBALS['user']->preferred_language);
+        $translation = $f->getTranslationByLanguage($GLOBALS['user']->id != 'nobody' ? $GLOBALS['user']->preferred_language : $_SESSION['_language']);
     ?>
     <article class="<?= $f->id ?>">
         <header>
@@ -68,14 +68,14 @@ if ($editor) {
 $sidebar = Sidebar::get();
 $sidebar->setImage($plugin->getPluginURL().'/assets/images/sidebar-faq.png');
 $search = new SearchWidget(URLHelper::getLink('?'));
-$search->addNeedle(_('Fragen/Antworten durchsuchen'), 'search', true);
-$search->addFilter(_('Frage'), 'search_question');
-$search->addFilter(_('Antwort'), 'search_answer');
+$search->addNeedle(dgettext('supportplugin', 'Fragen/Antworten durchsuchen'), 'search', true);
+$search->addFilter(dgettext('supportplugin', 'Frage'), 'search_question');
+$search->addFilter(dgettext('supportplugin', 'Antwort'), 'search_answer');
 $sidebar->addWidget($search);
 if ($editor) {
     $actions = new ActionsWidget();
     $actions->addLink(
-        _("Frage/Antwort hinzufügen"),
+        dgettext('supportplugin', "Frage/Antwort hinzufügen"),
         $controller->url_for('faq/edit'),
         'icons/16/blue/add.png',
         array('data-dialog' => 'size=auto;buttons=false')

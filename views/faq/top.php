@@ -22,6 +22,6 @@
     <?php } ?>
 </section>
 <div style="text-align: center">
-    <a href="<?= $allfaq ?>"><?= _('Alle häufig gestellten Fragen anzeigen') ?></a>
+    <a href="<?= $allfaq ?>"><?= dgettext('supportplugin', 'Alle häufig gestellten Fragen anzeigen') ?></a>
 </div>
 <?php } ?>
