@@ -21,6 +21,14 @@ class FaqController extends StudipController {
         } else {
             $this->set_layout($GLOBALS['template_factory']->open('layouts/base'));
         }
+        $support = false;
+        $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
+        foreach ($roles as $role) {
+            if ($role->rolename == 'Support') {
+                $support = true;
+                break;
+            }
+        }
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $this->editor = true;
         } else {
@@ -45,14 +53,6 @@ class FaqController extends StudipController {
         $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
             Request::get('search_question'), Request::get('search_answer'),
             $GLOBALS['user']->id != 'nobody' ? $GLOBALS['user']->preferred_language : $_SESSION['_language']);
-        $support = false;
-        $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
-        foreach ($roles as $role) {
-            if ($role->rolename == 'Support') {
-                $support = true;
-                break;
-            }
-        }
     }
 
     public function edit_action($id='') {
