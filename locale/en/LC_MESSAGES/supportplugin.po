@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-25 10:41+0100\n"
-"PO-Revision-Date: 2014-11-25 10:47+0200\n"
+"PO-Revision-Date: 2015-01-21 11:01+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English "
 "<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
@@ -29,7 +29,7 @@ msgstr "Add new question/answer"
 
 #: controllers/faq.php:92 controllers/links.php:70
 msgid "Die Änderungen wurden gespeichert."
-msgstr "The changes have been saved."
+msgstr "Your changes have been saved."
 
 #: controllers/faq.php:94 controllers/links.php:72
 msgid "Die Änderungen konnten nicht gespeichert werden."
@@ -193,7 +193,7 @@ msgstr "Go to course %s"
 
 #: views/search/result.php:66
 msgid "Einrichtungen"
-msgstr "Organisational units"
+msgstr "Institutes"
 
 #: views/search/result.php:76
 #, php-format
