@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-25 10:41+0100\n"
-"PO-Revision-Date: 2015-01-21 11:01+0200\n"
+"PO-Revision-Date: 2015-01-21 13:03+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English "
 "<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
@@ -37,7 +37,7 @@ msgstr "The changes could not be saved."
 
 #: controllers/faq.php:102
 msgid "Der Eintrag wurde gelöscht."
-msgstr "The entry has been deleted."
+msgstr "Entry deleted."
 
 #: controllers/faq.php:104
 msgid "Der Eintrag konnte nicht gelöscht werden."
@@ -158,7 +158,7 @@ msgstr "No results were found for search query \"%s\"."
 
 #: views/search/result.php:8
 msgid "Personen"
-msgstr "People"
+msgstr "Persons"
 
 #: views/search/result.php:11 views/search/result.php:41
 #: views/search/result.php:69
