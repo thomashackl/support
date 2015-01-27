@@ -38,7 +38,7 @@ if ($faqs) {
             </h1>
             <? if ($editor) { ?>
             <nav>
-                <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto;buttons=false" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
+                <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
                     <?= Assets::img('icons/16/blue/edit.png'); ?>
                 </a>
             </nav>

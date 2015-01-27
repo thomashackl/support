@@ -28,8 +28,6 @@
     <?php if ($faq) { ?>
     <input type="hidden" name="faq_id" value="<?= $faq->id ?>"/>
     <?php } ?>
-    <div class="submit_wrapper">
-        <?= Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit') ?>
-        <?= LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links')) ?>
-    </div>
+    <?= Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit', array('data-dialog-button' => '1')) ?>
+    <?= LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links'), array('data-dialog-button' => '1', 'data-dialog' => 'close')) ?>
 </form>

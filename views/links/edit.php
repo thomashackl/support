@@ -20,8 +20,6 @@
     <?php if ($link) { ?>
     <input type="hidden" name="link_id" value="<?= $link->id ?>"/>
     <?php } ?>
-    <div class="submit_wrapper">
-        <?= Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit') ?>
-        <?= LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links')) ?>
-    </div>
+    <?= Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit', array('data-dialog-button' => '1')) ?>
+    <?= LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links'), array('data-dialog-button' => '1', 'data-dialog' => 'close')) ?>
 </form>
