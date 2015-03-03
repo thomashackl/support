@@ -97,12 +97,15 @@ class FaqController extends StudipController {
     }
 
     public function delete_action($id) {
-        $faq = SupportFaq::find($id);
-        if ($faq->delete()) {
-            $this->flash['success'] = dgettext('supportplugin', 'Der Eintrag wurde gelöscht.');
-        } else {
-            $this->flash['error'] = dgettext('supportplugin', 'Der Eintrag konnte nicht gelöscht werden.');
+        if ($this->editor) {
+            $faq = SupportFaq::find($id);
+            if ($faq->delete()) {
+                $this->flash['success'] = dgettext('supportplugin', 'Der Eintrag wurde gelöscht.');
+            } else {
+                $this->flash['error'] = dgettext('supportplugin', 'Der Eintrag konnte nicht gelöscht werden.');
+            }
         }
+        $this->redirect($this->url_for('faq'));
     }
 
     public function sort_action() {

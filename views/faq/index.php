@@ -41,6 +41,9 @@ if ($faqs) {
                 <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
                     <?= Assets::img('icons/16/blue/edit.png'); ?>
                 </a>
+                <a href="<?= $controller->url_for('faq/delete/'.$f->id); ?>" title="<?= dgettext('supportplugin', "Frage/Antwort löschen") ?>" onclick="return window.confirm(<?= dgettext('supportplugin', 'Eintrag wirklich löschen?') ?>);">
+                    <?= Assets::img('icons/16/blue/trash.png'); ?>
+                </a>
             </nav>
             <? } ?>
         </header>

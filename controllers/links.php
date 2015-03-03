@@ -82,6 +82,7 @@ class LinksController extends StudipController {
         } else {
             $this->flash['error'] = dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelöscht werden.', htmlReady($title)));
         }
+        $this->redirect($this->url_for('links'));
     }
 
     public function sort_action() {
