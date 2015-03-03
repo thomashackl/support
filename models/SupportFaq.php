@@ -60,8 +60,6 @@ class SupportFaq extends SimpleORMap {
                 $limit_str = " LIMIT ".intval($limit);
             }
             $query .= $where.$order.$limit_str;
-            Log::set('sp', '/Users/thomashackl/Downloads/studip_support.log');
-            Log::info_sp($query);
             $faqs = array();
             foreach (DBManager::get()->fetchFirst($query, array('searchterm' => '%'.$searchterm.'%', 'lang' => $language)) as $id) {
                 $faqs[] = SupportFaq::find($id);
