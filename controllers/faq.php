@@ -76,16 +76,21 @@ class FaqController extends StudipController {
         }
         $translations = array();
         foreach (Request::getArray('translation') as $lang => $translation) {
-            if ($translation['id']) {
+            if ($translation['question'] && $translation['answer']) {
+                if ($translation['id']) {
+                    $t = SupportFaqTranslation::find($translation['id']);
+                } else {
+                    $t = new SupportFaqTranslation();
+                }
+                $t->faq_id = Request::option('faq_id');
+                $t->lang = $lang;
+                $t->question = $translation['question'];
+                $t->answer = $translation['answer'];
+                $translations[] = $t;
+            } else if ($translation['id']) {
                 $t = SupportFaqTranslation::find($translation['id']);
-            } else {
-                $t = new SupportFaqTranslation();
+                $t->delete();
             }
-            $t->faq_id = Request::option('faq_id');
-            $t->lang = $lang;
-            $t->question = $translation['question'];
-            $t->answer = $translation['answer'];
-            $translations[] = $t;
         }
         $faq->translations = SimpleORMapCollection::createFromArray($translations);
         if ($faq->store()) {
