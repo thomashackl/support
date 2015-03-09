@@ -56,15 +56,3 @@ STUDIP.SupportPlugin.init();
 //-->
 </script>
 <?php
-$sidebar = Sidebar::get();
-$sidebar->setImage($plugin->getPluginURL().'/assets/images/sidebar-links.png');
-if ($i_am_root) {
-    $actions = new ActionsWidget();
-    $actions->addLink(
-        dgettext('supportplugin', "Link hinzufügen"),
-        $controller->url_for('links/edit'),
-        'icons/16/blue/add.png',
-        array('data-dialog' => 'size=auto;buttons=false')
-    );
-    $sidebar->addWidget($actions);
-}

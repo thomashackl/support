@@ -47,6 +47,23 @@ class FaqController extends StudipController {
         }
         Navigation::activateItem('/support/faq');
         $this->set_content_type('text/html;charset=windows-1252');
+        $this->sidebar = Sidebar::get();
+        $this->sidebar->setImage($this->dispatcher->plugin->getPluginURL().'/assets/images/sidebar-support.png');
+        $search = new SearchWidget(URLHelper::getLink('?'));
+        $search->addNeedle(dgettext('supportplugin', 'Fragen/Antworten durchsuchen'), 'search', true);
+        $search->addFilter(dgettext('supportplugin', 'Frage'), 'search_question');
+        $search->addFilter(dgettext('supportplugin', 'Antwort'), 'search_answer');
+        $this->sidebar->addWidget($search);
+        if ($this->editor) {
+            $actions = new ActionsWidget();
+            $actions->addLink(
+                dgettext('supportplugin', "Frage/Antwort hinzufügen"),
+                $this->url_for('faq/edit'),
+                'icons/16/blue/add.png',
+                array('data-dialog' => 'size=auto;buttons=false')
+            );
+            $this->sidebar->addWidget($actions);
+        }
     }
 
     public function index_action() {

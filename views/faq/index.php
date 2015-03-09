@@ -68,20 +68,3 @@ if ($editor) {
 </script>
 <?php
 }
-$sidebar = Sidebar::get();
-$sidebar->setImage($plugin->getPluginURL().'/assets/images/sidebar-faq.png');
-$search = new SearchWidget(URLHelper::getLink('?'));
-$search->addNeedle(dgettext('supportplugin', 'Fragen/Antworten durchsuchen'), 'search', true);
-$search->addFilter(dgettext('supportplugin', 'Frage'), 'search_question');
-$search->addFilter(dgettext('supportplugin', 'Antwort'), 'search_answer');
-$sidebar->addWidget($search);
-if ($editor) {
-    $actions = new ActionsWidget();
-    $actions->addLink(
-        dgettext('supportplugin', "Frage/Antwort hinzufügen"),
-        $controller->url_for('faq/edit'),
-        'icons/16/blue/add.png',
-        array('data-dialog' => 'size=auto;buttons=false')
-    );
-    $sidebar->addWidget($actions);
-}

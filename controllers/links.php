@@ -39,6 +39,18 @@ class LinksController extends StudipController {
         }
         Navigation::activateItem('/support/links');
         $this->set_content_type('text/html;charset=windows-1252');
+        $sidebar = Sidebar::get();
+        $sidebar->setImage($this->dispatcher->plugin->getPluginURL().'/assets/images/sidebar-support.png');
+        if ($this->i_am_root) {
+            $actions = new ActionsWidget();
+            $actions->addLink(
+                dgettext('supportplugin', "Link hinzufügen"),
+                $this->url_for('links/edit'),
+                'icons/16/blue/add.png',
+                array('data-dialog' => 'size=auto;buttons=false')
+            );
+            $sidebar->addWidget($actions);
+        }
     }
 
     public function index_action() {
