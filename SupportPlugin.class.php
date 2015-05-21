@@ -46,10 +46,17 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             $linksNavi->setImage('icons/16/white/link-intern.png');
             $linksNavi->setActiveImage('icons/16/black/link-intern.png');
             $navigation->addSubnavigation('links', $linksNavi);
+
         }
         $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
         $faqNavi->setImage('icons/16/white/question-circle.png');
         $faqNavi->setActiveImage('icons/16/black/question-circle.png');
+        if ($GLOBALS['perm']->have_perm('root') || $support) {
+            $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+            $faqNavi->addSubnavigation('faqs', $faqlistNavi);
+            $categoriesNavi = new Navigation(dgettext('supportplugin', 'Kategorien'), PluginEngine::getURL($this, array(), 'categories'));
+            $faqNavi->addSubnavigation('categories', $categoriesNavi);
+        }
         $navigation->addSubnavigation('faq', $faqNavi);
         Navigation::addItem('/support', $navigation);
     }

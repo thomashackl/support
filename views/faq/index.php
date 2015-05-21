@@ -16,7 +16,10 @@ if ($faqs) {
 ?>
 <section class="contentbox" id="supportfaqs" data-sort-url="'<?= $url ?>'">
     <header>
-        <h1><?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?></h1>
+        <h1>
+            <?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?>
+            <?= $category ? ' - '.htmlReady($category->getTranslationByLanguage($lang)->name) : '' ?>
+        </h1>
         <nav>
             <? if ($editor) { ?>
             <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto;buttons=false" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
@@ -27,7 +30,7 @@ if ($faqs) {
     </header>
     <?php
     foreach ($faqs as $f) {
-        $translation = $f->getTranslationByLanguage($GLOBALS['user']->id != 'nobody' ? $GLOBALS['user']->preferred_language : $_SESSION['_language']);
+        $translation = $f->getTranslationByLanguage($lang);
     ?>
     <article class="<?= $f->id ?>">
         <header>
@@ -55,7 +58,14 @@ if ($faqs) {
 </section>
 <?php } else { ?>
 <section>
-    <?= dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen vorhanden.') ?>
+    <?php if ($category) { ?>
+    <?= MessageBox::info(sprintf(
+            dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen in der Kategorie "%s" vorhanden.'),
+            $category->getTranslationByLanguage($lang)->name
+            )) ?>
+    <?php } else { ?>
+    <?= MessageBox::info(dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen vorhanden.')) ?>
+    <?php } ?>
 </section>
 <?php
 }

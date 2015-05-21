@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-25 10:41+0100\n"
+"POT-Creation-Date: 2015-05-21 09:37+0200\n"
 "PO-Revision-Date: 2015-01-21 13:03+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English "
-"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
+"Language-Team: English <http://example.com/weblate/projects/studip/"
+"supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
@@ -19,37 +19,79 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.1-dev\n"
 
-#: controllers/faq.php:63 views/faq/index.php:41
-msgid "Frage/Antwort bearbeiten"
-msgstr "Edit question/answer"
+#: controllers/categories.php:59 controllers/categories.php:77
+#, fuzzy
+msgid "Kategorie hinzufügen"
+msgstr "Add new link"
 
-#: controllers/faq.php:63 views/faq/index.php:22 views/faq/index.php:78
-msgid "Frage/Antwort hinzufügen"
-msgstr "Add new question/answer"
+#: controllers/categories.php:77 views/categories/index.php:33
+#, fuzzy
+msgid "Kategorie bearbeiten"
+msgstr "Edit link"
 
-#: controllers/faq.php:92 controllers/links.php:70
+#: controllers/categories.php:107 controllers/faq.php:147
+#: controllers/links.php:82
 msgid "Die Änderungen wurden gespeichert."
 msgstr "Your changes have been saved."
 
-#: controllers/faq.php:94 controllers/links.php:72
+#: controllers/categories.php:109 controllers/faq.php:149
+#: controllers/links.php:84
 msgid "Die Änderungen konnten nicht gespeichert werden."
 msgstr "The changes could not be saved."
 
-#: controllers/faq.php:102
+#: controllers/categories.php:118
+#, fuzzy
+msgid "Die Kategorie wurde gelöscht."
+msgstr "Entry deleted."
+
+#: controllers/categories.php:120
+#, fuzzy
+msgid "Die Kategorie konnte nicht gelöscht werden."
+msgstr "The entry could not be deleted."
+
+#: controllers/faq.php:75
+msgid "Fragen/Antworten durchsuchen"
+msgstr "Search in questions/answers"
+
+#: controllers/faq.php:76 views/faq/edit.php:15
+msgid "Frage"
+msgstr "Question"
+
+#: controllers/faq.php:77 views/faq/edit.php:19
+msgid "Antwort"
+msgstr "Answer"
+
+#: controllers/faq.php:82 controllers/faq.php:108 views/faq/index.php:25
+msgid "Frage/Antwort hinzufügen"
+msgstr "Add new question/answer"
+
+#: controllers/faq.php:90 SupportPlugin.class.php:57
+msgid "Kategorien"
+msgstr ""
+
+#: controllers/faq.php:91
+msgid "Alle Kategorien"
+msgstr ""
+
+#: controllers/faq.php:108 views/faq/index.php:44
+msgid "Frage/Antwort bearbeiten"
+msgstr "Edit question/answer"
+
+#: controllers/faq.php:158
 msgid "Der Eintrag wurde gelöscht."
 msgstr "Entry deleted."
 
-#: controllers/faq.php:104
+#: controllers/faq.php:160
 msgid "Der Eintrag konnte nicht gelöscht werden."
 msgstr "The entry could not be deleted."
 
-#: controllers/links.php:53
-msgid "Link bearbeiten"
-msgstr "Edit link"
-
-#: controllers/links.php:53 views/links/index.php:64
+#: controllers/links.php:47 controllers/links.php:65
 msgid "Link hinzufügen"
 msgstr "Add new link"
+
+#: controllers/links.php:65
+msgid "Link bearbeiten"
+msgstr "Edit link"
 
 #: controllers/search.php:33
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
@@ -59,7 +101,7 @@ msgstr "Search here for courses, people or organisational units"
 msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
 msgstr "Search for courses, people or organisational units"
 
-#: SupportPlugin.class.php:39 SupportPlugin.class.php:61
+#: SupportPlugin.class.php:39 SupportPlugin.class.php:68
 msgid "Support"
 msgstr "Support"
 
@@ -71,33 +113,69 @@ msgstr "Search"
 msgid "Wichtige Links"
 msgstr "Important links"
 
-#: SupportPlugin.class.php:50 views/faq/index.php:19 views/faq/top.php:4
+#: SupportPlugin.class.php:51 SupportPlugin.class.php:55
+#: views/faq/index.php:20 views/faq/top.php:4
 msgid "Häufig gestellte Fragen"
 msgstr "Frequently asked questions"
 
-#: views/faq/edit.php:15 views/faq/index.php:72
-msgid "Frage"
-msgstr "Question"
+#: views/categories/edit.php:5 views/categories/index.php:15
+msgid "Name der Kategorie"
+msgstr ""
 
-#: views/faq/edit.php:19 views/faq/index.php:73
-msgid "Antwort"
-msgstr "Answer"
-
-#: views/faq/edit.php:32 views/links/edit.php:24
+#: views/categories/edit.php:27 views/faq/edit.php:45 views/links/edit.php:23
 msgid "Speichern"
 msgstr "Save"
 
-#: views/faq/edit.php:33 views/links/edit.php:25
+#: views/categories/edit.php:28 views/faq/edit.php:46 views/links/edit.php:24
 msgid "Abbrechen"
 msgstr "Cancel"
 
-#: views/faq/index.php:55
-msgid "Es sind keine häufig gestellten Fragen vorhanden."
+#: views/categories/index.php:11
+#, fuzzy
+msgid "Kategorien häufig gestellter Fragen"
+msgstr "Frequently asked questions"
+
+#: views/categories/index.php:18
+msgid "Aktionen"
+msgstr "Actions"
+
+#: views/categories/index.php:36
+#, fuzzy
+msgid "Kategorie löschen"
+msgstr "Delete entry"
+
+#: views/categories/index.php:36
+msgid "Kategorie wirklich löschen?"
+msgstr ""
+
+#: views/categories/index.php:47
+#, fuzzy
+msgid "Es sind keine Kategorien für häufig gestellte Fragen vorhanden."
 msgstr "No frequently asked questions have been found."
 
-#: views/faq/index.php:71
-msgid "Fragen/Antworten durchsuchen"
+#: views/faq/edit.php:31
+msgid "Kategoriezuordnung"
+msgstr ""
+
+#: views/faq/index.php:47
+#, fuzzy
+msgid "Frage/Antwort löschen"
 msgstr "Search in questions/answers"
+
+#: views/faq/index.php:47
+#, fuzzy
+msgid "Eintrag wirklich löschen?"
+msgstr "Delete entry"
+
+#: views/faq/index.php:63
+#, fuzzy, php-format
+msgid ""
+"Es sind keine häufig gestellten Fragen in der Kategorie \"%s\" vorhanden."
+msgstr "No frequently asked questions have been found."
+
+#: views/faq/index.php:67
+msgid "Es sind keine häufig gestellten Fragen vorhanden."
+msgstr "No frequently asked questions have been found."
 
 #: views/faq/top.php:25
 msgid "Alle häufig gestellten Fragen anzeigen"
@@ -209,9 +287,6 @@ msgstr "Go to organisational unit %s"
 #~ msgstr ""
 #~ "This is a list of important links to other systems or relevant Stud.IP "
 #~ "content."
-
-#~ msgid "Aktionen"
-#~ msgstr "Actions"
 
 #~ msgid ""
 #~ "Die Suche findet sowohl Personen als auch Veranstaltungen und "

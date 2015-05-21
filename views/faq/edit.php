@@ -24,6 +24,20 @@
         <?php } ?>
     </fieldset>
     <?php } ?>
+    Categories:<pre><?= print_r($f->categories, 1) ?></pre>
+    <?php if ($categories) { ?>
+    <fieldset>
+        <legend>
+            <?= dgettext('supportplugin', 'Kategoriezuordnung') ?>
+        </legend>
+        <?php foreach ($categories as $c) { ?>
+        <label>
+            <input type="checkbox" name="categories[]" value="<?= $c->id ?>"<?= in_array($c->id, $faqcats) ? ' checked="checked"' : '' ?>/>
+            <?= htmlReady($c->getTranslationByLanguage($lang)->name) ?>
+        </label>
+        <?php } ?>
+    </fieldset>
+    <?php } ?>
     <?= CSRFProtection::tokenTag() ?>
     <?php if ($faq) { ?>
     <input type="hidden" name="faq_id" value="<?= $faq->id ?>"/>

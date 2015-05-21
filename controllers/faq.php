@@ -34,6 +34,15 @@ class FaqController extends StudipController {
         } else {
             $this->editor = false;
         }
+        /*
+         * Currently set language:
+         * - if user is logged in, use language from user preferences
+         * - non logged in users have either set explicitly a different language ($_SESSION)
+         * - or use the system default.
+         */
+        $this->lang = $GLOBALS['user']->id != 'nobody' ?
+            $GLOBALS['user']->preferred_language : $_SESSION['_language'] ?:
+                $GLOBALS['DEFAULT_LANGUAGE'];
         if (Studip\ENV == 'development') {
             $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
             $js = $this->plugin->getPluginURL().'/assets/javascripts/supportplugin.js';
@@ -45,8 +54,21 @@ class FaqController extends StudipController {
         if ($this->editor) {
             PageLayout::addScript($js);
         }
-        Navigation::activateItem('/support/faq');
+        if ($this->editor) {
+            Navigation::activateItem('/support/faq/faqs');
+        } else {
+            Navigation::activateItem('/support/faq');
+        }
         $this->set_content_type('text/html;charset=windows-1252');
+    }
+
+    public function index_action($category = '') {
+        if ($category) {
+            $this->category = SupportFaqCategory::find($category);
+        }
+        $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
+            Request::get('search_question'), Request::get('search_answer'),
+            $this->lang, $category);
         $this->sidebar = Sidebar::get();
         $this->sidebar->setImage($this->dispatcher->plugin->getPluginURL().'/assets/images/sidebar-support.png');
         $search = new SearchWidget(URLHelper::getLink('?'));
@@ -60,22 +82,28 @@ class FaqController extends StudipController {
                 dgettext('supportplugin', "Frage/Antwort hinzufügen"),
                 $this->url_for('faq/edit'),
                 'icons/16/blue/add.png',
-                array('data-dialog' => 'size=auto;buttons=false')
+                array('data-dialog' => 'size=auto')
             );
             $this->sidebar->addWidget($actions);
         }
-    }
-
-    public function index_action() {
-        $this->faqs = SupportFaq::getFaqs(0, Request::get('search'),
-            Request::get('search_question'), Request::get('search_answer'),
-            $GLOBALS['user']->id != 'nobody' ? $GLOBALS['user']->preferred_language : $_SESSION['_language']);
+        $categories = new ViewsWidget();
+        $categories->setTitle(dgettext('supportplugin', 'Kategorien'));
+        $categories->addLink(dgettext('supportplugin', 'Alle Kategorien'),
+            $this->url_for('faq'), null)->setActive($category ? false : true);
+        foreach (SupportFaqCategory::getAll($this->lang) as $c) {
+            $t = $c->getTranslationByLanguage($this->lang);
+            $categories->addLink($t->name, $this->url_for('faq/index', $c->id), null)
+                ->setActive($c->id == $category);
+        }
+        $this->sidebar->addWidget($categories);
     }
 
     public function edit_action($id='') {
         if ($id) {
             $this->faq = SupportFaq::find($id);
         }
+        $this->categories = SupportFaqCategory::getAll($this->lang);
+        $this->faqcats = $this->faq->categories->pluck('category_id');
         if (Request::isXhr()) {
             $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Frage/Antwort bearbeiten') : dgettext('supportplugin', 'Frage/Antwort hinzufügen'));
         }
@@ -110,6 +138,11 @@ class FaqController extends StudipController {
             }
         }
         $faq->translations = SimpleORMapCollection::createFromArray($translations);
+        $categories = array();
+        foreach (Request::getArray('categories') as $id) {
+            $categories[] = SupportFaqCategory::find($id);
+        }
+        $faq->categories = SimpleORMapCollection::createFromArray($categories);
         if ($faq->store()) {
             $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
         } else {

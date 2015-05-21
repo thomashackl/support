@@ -24,6 +24,12 @@ class SupportFaq extends SimpleORMap {
             'on_delete' => 'delete',
             'on_store' => 'store'
         );
+        $config['has_and_belongs_to_many']['categories'] = array(
+            'class_name' => 'SupportFaqCategory',
+            'thru_table' => 'supportplugin_faq_category',
+            'on_delete' => 'delete',
+            'on_store' => 'store'
+        );
         parent::configure($config);
     }
 
@@ -37,7 +43,7 @@ class SupportFaq extends SimpleORMap {
      * @param string $language search FAQs with the given language
      * @return array
      */
-    public static function getFaqs($limit=0, $searchterm='', $search_in_question=false, $search_in_answer=false, $language='de_DE') {
+    public static function getFaqs($limit=0, $searchterm='', $search_in_question=false, $search_in_answer=false, $language='de_DE', $category_id='') {
         if ($searchterm) {
             $query = "SELECT f.`id`
                 FROM `supportplugin_faq` f
@@ -70,7 +76,15 @@ class SupportFaq extends SimpleORMap {
             if ($limit) {
                 $limit_str = " LIMIT ".intval($limit);
             }
-            return self::findBySQL("1 ORDER BY `position`".$limit_str);
+            if ($category_id) {
+                $faqs = array();
+                $all = self::findBySQL("1 ORDER BY `position`" . $limit_str);
+                return array_filter($all, function($f) use ($category_id) {
+                    return in_array($category_id, $f->categories->pluck('category_id'));
+                });
+            } else {
+                return self::findBySQL("1 ORDER BY `position`" . $limit_str);
+            }
         }
     }
 
