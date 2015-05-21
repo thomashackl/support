@@ -24,7 +24,6 @@
         <?php } ?>
     </fieldset>
     <?php } ?>
-    Categories:<pre><?= print_r($f->categories, 1) ?></pre>
     <?php if ($categories) { ?>
     <fieldset>
         <legend>
