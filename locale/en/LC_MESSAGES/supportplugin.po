@@ -8,26 +8,24 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-05-21 09:37+0200\n"
-"PO-Revision-Date: 2015-01-21 13:03+0200\n"
+"PO-Revision-Date: 2015-05-21 09:41+0200\n"
 "Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English <http://example.com/weblate/projects/studip/"
-"supportplugin/en/>\n"
+"Language-Team: English "
+"<http://example.com/weblate/projects/studip/supportplugin/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.1-dev\n"
+"X-Generator: Weblate 2.3-dev\n"
 
 #: controllers/categories.php:59 controllers/categories.php:77
-#, fuzzy
 msgid "Kategorie hinzufügen"
-msgstr "Add new link"
+msgstr "Add new category"
 
 #: controllers/categories.php:77 views/categories/index.php:33
-#, fuzzy
 msgid "Kategorie bearbeiten"
-msgstr "Edit link"
+msgstr "Edit category"
 
 #: controllers/categories.php:107 controllers/faq.php:147
 #: controllers/links.php:82
@@ -40,14 +38,12 @@ msgid "Die Änderungen konnten nicht gespeichert werden."
 msgstr "The changes could not be saved."
 
 #: controllers/categories.php:118
-#, fuzzy
 msgid "Die Kategorie wurde gelöscht."
-msgstr "Entry deleted."
+msgstr "Category deleted."
 
 #: controllers/categories.php:120
-#, fuzzy
 msgid "Die Kategorie konnte nicht gelöscht werden."
-msgstr "The entry could not be deleted."
+msgstr "The category could not be deleted."
 
 #: controllers/faq.php:75
 msgid "Fragen/Antworten durchsuchen"
@@ -67,11 +63,11 @@ msgstr "Add new question/answer"
 
 #: controllers/faq.php:90 SupportPlugin.class.php:57
 msgid "Kategorien"
-msgstr ""
+msgstr "Categories"
 
 #: controllers/faq.php:91
 msgid "Alle Kategorien"
-msgstr ""
+msgstr "All categories"
 
 #: controllers/faq.php:108 views/faq/index.php:44
 msgid "Frage/Antwort bearbeiten"
@@ -120,7 +116,7 @@ msgstr "Frequently asked questions"
 
 #: views/categories/edit.php:5 views/categories/index.php:15
 msgid "Name der Kategorie"
-msgstr ""
+msgstr "Category name"
 
 #: views/categories/edit.php:27 views/faq/edit.php:45 views/links/edit.php:23
 msgid "Speichern"
@@ -131,47 +127,42 @@ msgid "Abbrechen"
 msgstr "Cancel"
 
 #: views/categories/index.php:11
-#, fuzzy
 msgid "Kategorien häufig gestellter Fragen"
-msgstr "Frequently asked questions"
+msgstr "Frequently asked question categories"
 
 #: views/categories/index.php:18
 msgid "Aktionen"
 msgstr "Actions"
 
 #: views/categories/index.php:36
-#, fuzzy
 msgid "Kategorie löschen"
-msgstr "Delete entry"
+msgstr "Delete category"
 
 #: views/categories/index.php:36
 msgid "Kategorie wirklich löschen?"
-msgstr ""
+msgstr "Really delete category?"
 
 #: views/categories/index.php:47
-#, fuzzy
 msgid "Es sind keine Kategorien für häufig gestellte Fragen vorhanden."
-msgstr "No frequently asked questions have been found."
+msgstr "No frequently asked question categories have been found."
 
 #: views/faq/edit.php:31
 msgid "Kategoriezuordnung"
-msgstr ""
+msgstr "Category assignment"
 
 #: views/faq/index.php:47
-#, fuzzy
 msgid "Frage/Antwort löschen"
-msgstr "Search in questions/answers"
+msgstr "Delete question/answer"
 
 #: views/faq/index.php:47
-#, fuzzy
 msgid "Eintrag wirklich löschen?"
-msgstr "Delete entry"
+msgstr "Really delete entry?"
 
 #: views/faq/index.php:63
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Es sind keine häufig gestellten Fragen in der Kategorie \"%s\" vorhanden."
-msgstr "No frequently asked questions have been found."
+msgstr "No frequently asked questions have been found in the category \"%s\"."
 
 #: views/faq/index.php:67
 msgid "Es sind keine häufig gestellten Fragen vorhanden."
