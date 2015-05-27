@@ -29,12 +29,12 @@ class SearchController extends StudipController {
         PageLayout::addStylesheet($css);
         Navigation::activateItem('/support/search');
         $this->search = QuickSearch::get('searchterm', new SupportSearch())
-                    ->setAttributes(array(
-                        'placeholder' => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')
-                    ))
-                    ->withButton(array('width' => '500'))
-                    ->noSelectbox()
-                    ->disableAutoComplete();
+            ->setAttributes(array(
+                'placeholder' => dgettext('supportplugin', 'Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen')
+            ))
+            ->withButton(array('width' => '500'))
+            ->noSelectbox()
+            ->disableAutoComplete();
         if (Request::get('searchterm_parameter')) {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }

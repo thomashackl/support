@@ -21,15 +21,7 @@ class FaqController extends StudipController {
         } else {
             $this->set_layout($GLOBALS['template_factory']->open('layouts/base'));
         }
-        $support = false;
-        $roles = RolePersistence::getAssignedRoles($GLOBALS['user']->id);
-        foreach ($roles as $role) {
-            if ($role->rolename == 'Support') {
-                $support = true;
-                break;
-            }
-        }
-        if ($GLOBALS['perm']->have_perm('root') || $support) {
+        if ($GLOBALS['perm']->have_perm('root') || RolePersistence::isAssignedRole($GLOBALS['user']->id, 'Support')) {
             $this->editor = true;
         } else {
             $this->editor = false;
