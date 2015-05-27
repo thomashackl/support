@@ -73,7 +73,7 @@ class CategoriesController extends StudipController {
     public function save_action() {
         CSRFProtection::verifyUnsafeRequest();
         if (Request::option('category_id')) {
-            $faq = SupportFaqCategory::find(Request::option('category_id'));
+            $c = SupportFaqCategory::find(Request::option('category_id'));
         } else {
             $c = new SupportFaqCategory();
         }
