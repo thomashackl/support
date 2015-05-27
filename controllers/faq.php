@@ -103,7 +103,12 @@ class FaqController extends StudipController {
             $this->faq = SupportFaq::find($id);
         }
         $this->categories = SupportFaqCategory::getAll($this->lang);
-        $this->faqcats = $this->faq->categories->pluck('category_id');
+        $cats = $this->faq->categories;
+        if ($cats) {
+            $this->faqcats = $this->faq->categories->pluck('category_id');
+        } else {
+            $this->faqcats = array();
+        }
         if (Request::isXhr()) {
             $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Frage/Antwort bearbeiten') : dgettext('supportplugin', 'Frage/Antwort hinzufügen'));
         }
