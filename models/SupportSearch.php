@@ -149,7 +149,8 @@ class SupportSearch extends SearchType {
             $query = "SELECT DISTINCT `Seminar_id`, IF(`VeranstaltungsNummer`!='', CONCAT(`VeranstaltungsNummer`, ' ', `Name`), `Name`)
                 FROM `seminare`
                 WHERE (`Name` LIKE :searchterm
-                    OR `VeranstaltungsNummer` LIKE :searchterm)";
+                    OR `VeranstaltungsNummer` LIKE :searchterm
+                    OR `Untertitel` LIKE :searchterm)";
             if ($contextual_data['semester']) {
                 if ($contextual_data['semester']) {
                     $semester = Semester::find($contextual_data['semester']);
