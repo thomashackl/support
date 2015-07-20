@@ -45,9 +45,9 @@ class SupportFaq extends SimpleORMap {
      */
     public static function getFaqs($limit=0, $searchterm='', $search_in_question=false, $search_in_answer=false, $language='de_DE', $category_id='') {
         if ($searchterm) {
-            $query = "SELECT f.`id`
+            $query = "SELECT f.`faq_id`
                 FROM `supportplugin_faq` f
-                    JOIN `supportplugin_faq_i18n` i ON (f.`id`=i.`faq_id` AND i.`lang`=:lang)";
+                    JOIN `supportplugin_faq_i18n` i ON (f.`faq_id`=i.`faq_id` AND i.`lang`=:lang)";
             $where = "";
             if ($search_in_question) {
                 $where .= " WHERE i.`question` LIKE :searchterm";
