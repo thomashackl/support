@@ -110,7 +110,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
 
     public static function onDisable($pluginId) {
         foreach (RolePersistence::getAssignedPluginRoles($pluginId) as $role) {
-            RolePersistence::deleteAssignedPluginRoles($pluginId, $rols);
+            RolePersistence::deleteAssignedPluginRoles($pluginId, $role);
         }
     }
 
