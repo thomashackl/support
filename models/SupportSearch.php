@@ -133,11 +133,12 @@ class SupportSearch extends SearchType {
         $stmt = DBManager::get()->prepare(
             "SELECT DISTINCT `user_id`, CONCAT(`Vorname`, ' ', `Nachname`, ' (', `username`, ')')
             FROM `auth_user_md5`
-            WHERE `username` LIKE :searchterm
-                OR `Vorname` LIKE :searchterm
-                OR `Nachname` LIKE :searchterm
-                OR CONCAT(`Vorname`, ' ', `Nachname`) LIKE :searchterm
-                OR CONCAT(`Nachname`, ' ', `Vorname`) LIKE :searchterm
+            WHERE (`username` LIKE :searchterm
+                    OR `Vorname` LIKE :searchterm
+                    OR `Nachname` LIKE :searchterm
+                    OR CONCAT(`Vorname`, ' ', `Nachname`) LIKE :searchterm
+                    OR CONCAT(`Nachname`, ' ', `Vorname`) LIKE :searchterm)
+                AND `visible` != 'never'
             ORDER BY `Nachname`, `Vorname`, `username`");
         $stmt->execute(array('searchterm' => implode('%', explode(' ', '%'.$searchterm.'%'))));
         return $stmt->fetchAll(PDO::FETCH_NUM);
