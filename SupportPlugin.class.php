@@ -120,8 +120,8 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         $answer = strlen($translation->answer) > 120 ? substr(kill_format($translation->answer), 0, 120).'...' : $translation->answer;
         $result = array(
             'id' => $faq->id,
-            'name' => Podium::mark($translation->question),
-            'additional' => Podium::mark($answer),
+            'name' => Podium::mark($translation->question, $search),
+            'additional' => Podium::mark($answer, $search),
             'url' => URLHelper::getURL('plugins.php/supportplugin/faq#'.$faq->id,
                 array(
                     'contentbox_type' => 'news',
