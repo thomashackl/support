@@ -32,7 +32,7 @@ if ($faqs) {
     foreach ($faqs as $f) {
         $translation = $f->getTranslationByLanguage($lang);
     ?>
-    <article class="<?= $f->id ?>">
+    <article class="<?= ContentboxHelper::classes($f->id) ?>" id="<?= $f->id ?>">
         <header>
             <h1>
                 <a href="<?= ContentBoxHelper::href($f->id, array('contentbox_type' => 'news')) ?>">

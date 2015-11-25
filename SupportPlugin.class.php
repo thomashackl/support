@@ -59,6 +59,13 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         }
         $navigation->addSubnavigation('faq', $faqNavi);
         Navigation::addItem('/support', $navigation);
+
+        // Integrate FAQs in Podium search.
+        if (class_exists('Podium')) {
+            Podium::addType('faq', dgettext('supportplugin', 'Häufig gestellte Fragen'),
+                array($this, 'getPodiumSQL'), array($this, 'getPodiumFilter'));
+        }
+
     }
 
     /**
@@ -91,8 +98,47 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         return $t->render();
     }
 
+    public function getPodiumSQL($search) {
+
+        if (!$search) {
+            return null;
+        }
+        $query = DBManager::get()->quote("%$search%");
+        $lang = $GLOBALS['user']->preferred_language ?: $GLOBALS['DEFAULT_LANGUAGE'];
+        $sql = "SELECT 'faq' AS type, f.`faq_id` AS id
+            FROM `supportplugin_faq` f
+                JOIN `supportplugin_faq_i18n` i ON (f.`faq_id`=i.`faq_id` AND i.`lang`='$lang')
+            WHERE (i.`question` LIKE $query OR i.`answer` LIKE $query)
+                AND i.`lang` = '$lang'";
+        return $sql;
+    }
+
+    public function getPodiumFilter($faq_id, $search) {
+        StudipAutoloader::addAutoloadPath(realpath(__DIR__.'/models'));
+        $faq = SupportFaq::find($faq_id);
+        $translation = $faq->getTranslationByLanguage($lang);
+        $answer = strlen($translation->answer) > 120 ? substr(kill_format($translation->answer), 0, 120).'...' : $translation->answer;
+        $result = array(
+            'id' => $faq->id,
+            'name' => Podium::mark($translation->question),
+            'additional' => Podium::mark($answer),
+            'url' => URLHelper::getURL('plugins.php/supportplugin/faq#'.$faq->id,
+                array(
+                    'contentbox_type' => 'news',
+                    'contentbox_open' => $faq->id
+                )),
+            'expand' => URLHelper::getURL('plugins.php/supportplugin/faq',
+                array(
+                    'search' => $search,
+                    'search_question' => 1,
+                    'search_answer' => 1
+                ))
+        );
+        return $result;
+    }
+
     private function setupAutoload() {
-        StudipAutoloader::addAutoloadPath(realpath(dirname(__FILE__).'/models'));
+        StudipAutoloader::addAutoloadPath(realpath(__DIR__.'/models'));
     }
 
     public static function onEnable($pluginId) {
