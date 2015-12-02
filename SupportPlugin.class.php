@@ -31,7 +31,6 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             }
         }
         parent::__construct();
-        //echo 'HERE!<br/>';
         // Localization
         bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
         $active = $GLOBALS['perm']->have_perm('root') || $support ? 'search' : 'faq';
@@ -144,14 +143,16 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
     public static function onEnable($pluginId) {
         parent::onEnable($pluginId);
         // Create "Support" role if necessary and assign plugin.
-        if (!DBManager::get()->fetchAll("SELECT `roleid` FROM `roles` WHERE `rolename`='Support'")) {
+        if (!$role = DBManager::get()->fetchOne("SELECT `roleid` FROM `roles` WHERE `rolename`='Support'")) {
             $role = new Role();
             $role->setRolename("Support");
             $rid = RolePersistence::saveRole($role);
             RolePersistence::assignPluginRoles($pluginId, array($rid));
+        } else {
+            RolePersistence::assignPluginRoles($pluginId, array($role['roleid']));
         }
-        // Assign plugin to "nobody" role.
-        RolePersistence::assignPluginRoles($pluginId, array(7));
+        // Assign plugin to system roles, including "nobody".
+        RolePersistence::assignPluginRoles($pluginId, array(1, 2, 3, 4, 5, 6, 7));
     }
 
     public static function onDisable($pluginId) {
