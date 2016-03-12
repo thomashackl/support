@@ -22,7 +22,7 @@ if ($faqs) {
         </h1>
         <nav>
             <? if ($editor) { ?>
-            <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto;buttons=false" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
+            <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
                 <?= Assets::img('icons/16/blue/add.png'); ?>
             </a>
             <? } ?>

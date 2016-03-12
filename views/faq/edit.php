@@ -1,5 +1,4 @@
-<?php use Studip\Button, Studip\LinkButton; ?>
-<form class="studip_form" action="<?= $controller->url_for('faq/save') ?>" method="post">
+<form class="default" action="<?= $controller->url_for('faq/save') ?>" method="post">
     <?php
     foreach ($GLOBALS['INSTALLED_LANGUAGES'] as $key => $lang) {
         if ($faq) {
@@ -41,6 +40,8 @@
     <?php if ($faq) { ?>
     <input type="hidden" name="faq_id" value="<?= $faq->id ?>"/>
     <?php } ?>
-    <?= Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit', array('data-dialog-button' => '1')) ?>
-    <?= LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links'), array('data-dialog-button' => '1', 'data-dialog' => 'close')) ?>
+    <div data-dialog-button>
+        <?= Studip\Button::createAccept(dgettext('supportplugin', 'Speichern'), 'submit') ?>
+        <?= Studip\LinkButton::createCancel(dgettext('supportplugin', 'Abbrechen'), $controller->url_for('links'), array('data-dialog' => 'close')) ?>
+    </div>
 </form>
