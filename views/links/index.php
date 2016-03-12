@@ -20,7 +20,7 @@ if ($links) {
     foreach ($links as $link) {
     ?>
     <div class="supportlink" id="<?= $link->id ?>">
-    <?= formatReady('++['.$link->title.']'.$link->link.'++') ?>
+    <?= formatReady('++['.$link->title.']'.$link->link.' ++') ?>
     <?php
         if ($i_am_root) {
     ?>
