@@ -1,12 +1,4 @@
 <?php
-if ($flash['success']) {
-    echo MessageBox::success($flash['success']);
-}
-if ($flash['error']) {
-    echo MessageBox::error($flash['error']);
-}
-?>
-<?php
 if ($faqs) {
     $url = $controller->url_for('faq/sort');
     $pos = strpos($url, '?');
@@ -23,7 +15,7 @@ if ($faqs) {
         <nav>
             <? if ($editor) { ?>
             <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
-                <?= Assets::img('icons/16/blue/add.png'); ?>
+                <?= Assets::img('icons/blue/add.svg'); ?>
             </a>
             <? } ?>
         </nav>
@@ -53,10 +45,10 @@ if ($faqs) {
                 ?>
                 <?php if ($editor) { ?>
                 <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
-                    <?= Assets::img('icons/16/blue/edit.png'); ?>
+                    <?= Assets::img('icons/blue/edit.svg'); ?>
                 </a>
                 <a href="<?= $controller->url_for('faq/delete/'.$f->id); ?>" title="<?= dgettext('supportplugin', "Frage/Antwort löschen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Eintrag wirklich löschen?') ?>');">
-                    <?= Assets::img('icons/16/blue/trash.png'); ?>
+                    <?= Assets::img('icons/blue/trash.svg'); ?>
                 </a>
                 <?php } ?>
             </nav>

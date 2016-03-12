@@ -38,18 +38,18 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         $navigation->setImage($this->getPluginURL().'/assets/images/support.svg', array('title' => _('Support')));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
-            $searchNavi->setImage('icons/16/white/search.png');
-            $searchNavi->setActiveImage('icons/16/black/search.png');
+            $searchNavi->setImage('icons/white/search.svg');
+            $searchNavi->setActiveImage('icons/black/search.svg');
             $navigation->addSubnavigation('search', $searchNavi);
             $linksNavi = new Navigation(dgettext('supportplugin', 'Wichtige Links'), PluginEngine::getURL($this, array(), 'links'));
-            $linksNavi->setImage('icons/16/white/link-intern.png');
-            $linksNavi->setActiveImage('icons/16/black/link-intern.png');
+            $linksNavi->setImage('icons/white/link-intern.svg');
+            $linksNavi->setActiveImage('icons/black/link-intern.svg');
             $navigation->addSubnavigation('links', $linksNavi);
 
         }
         $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
-        $faqNavi->setImage('icons/16/white/question-circle.png');
-        $faqNavi->setActiveImage('icons/16/black/question-circle.png');
+        $faqNavi->setImage('icons/white/question-circle.svg');
+        $faqNavi->setActiveImage('icons/black/question-circle.svg');
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
             $faqNavi->addSubnavigation('faqs', $faqlistNavi);

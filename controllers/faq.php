@@ -73,7 +73,7 @@ class FaqController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Frage/Antwort hinzufügen"),
                 $this->url_for('faq/edit'),
-                'icons/16/blue/add.png',
+                'icons/blue/add.svg',
                 array('data-dialog' => 'size=auto')
             );
             $this->sidebar->addWidget($actions);
@@ -141,9 +141,9 @@ class FaqController extends StudipController {
         }
         $faq->categories = SimpleORMapCollection::createFromArray($categories);
         if ($faq->store()) {
-            $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
+            PageLayout::postSuccess(dgettext('supportplugin', 'Die Änderungen wurden gespeichert.'));
         } else {
-            $this->flash['error'] = dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.');
+            PageLayout::postError(dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.'));
         }
         $this->redirect($this->url_for('faq'));
     }
@@ -152,9 +152,9 @@ class FaqController extends StudipController {
         if ($this->editor) {
             $faq = SupportFaq::find($id);
             if ($faq->delete()) {
-                $this->flash['success'] = dgettext('supportplugin', 'Der Eintrag wurde gelöscht.');
+                PageLayout::postSuccess(dgettext('supportplugin', 'Der Eintrag wurde gelöscht.'));
             } else {
-                $this->flash['error'] = dgettext('supportplugin', 'Der Eintrag konnte nicht gelöscht werden.');
+                PageLayout::postError(dgettext('supportplugin', 'Der Eintrag konnte nicht gelöscht werden.'));
             }
         }
         $this->redirect($this->url_for('faq'));

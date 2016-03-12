@@ -50,7 +50,7 @@ class CategoriesController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Kategorie hinzufügen"),
                 $this->url_for('categories/edit'),
-                'icons/16/blue/add.png',
+                'icons/blue/add.svg',
                 array('data-dialog' => 'size=auto')
             );
             $this->sidebar->addWidget($actions);
@@ -96,9 +96,9 @@ class CategoriesController extends StudipController {
         }
         $c->translations = SimpleORMapCollection::createFromArray($translations);
         if ($c->store()) {
-            $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
+            PageLayout::postSuccess(dgettext('supportplugin', 'Die Änderungen wurden gespeichert.'));
         } else {
-            $this->flash['error'] = dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.');
+            PageLayout::postError(dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.'));
         }
         $this->redirect($this->url_for('categories'));
     }
@@ -107,9 +107,9 @@ class CategoriesController extends StudipController {
         if ($this->editor) {
             $c = SupportFaqCategory::find($id);
             if ($c->delete()) {
-                $this->flash['success'] = dgettext('supportplugin', 'Die Kategorie wurde gelöscht.');
+                PageLayout::postSuccess(dgettext('supportplugin', 'Die Kategorie wurde gelöscht.'));
             } else {
-                $this->flash['error'] = dgettext('supportplugin', 'Die Kategorie konnte nicht gelöscht werden.');
+                PageLayout::postError(dgettext('supportplugin', 'Die Kategorie konnte nicht gelöscht werden.'));
             }
         }
         $this->redirect($this->url_for('categories'));

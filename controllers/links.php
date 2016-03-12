@@ -46,7 +46,7 @@ class LinksController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Link hinzufügen"),
                 $this->url_for('links/edit'),
-                'icons/16/blue/add.png',
+                'icons/blue/add.svg',
                 array('data-dialog' => 'size=auto;buttons=false')
             );
             $sidebar->addWidget($actions);

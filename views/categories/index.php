@@ -1,11 +1,3 @@
-<?php
-if ($flash['success']) {
-    echo MessageBox::success($flash['success']);
-}
-if ($flash['error']) {
-    echo MessageBox::error($flash['error']);
-}
-?>
 <?php if ($categories) { ?>
 <table class="default">
     <caption><?= dgettext('supportplugin', 'Kategorien häufig gestellter Fragen') ?></caption>
@@ -31,10 +23,10 @@ if ($flash['error']) {
             <? if ($editor) { ?>
             <td width="">
                 <a href="<?= $controller->url_for('categories/edit/'.$c->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Kategorie bearbeiten") ?>">
-                    <?= Assets::img('icons/16/blue/edit.png'); ?>
+                    <?= Assets::img('icons/blue/edit.svg'); ?>
                 </a>
                 <a href="<?= $controller->url_for('categories/delete/'.$c->id); ?>" title="<?= dgettext('supportplugin', "Kategorie löschen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Kategorie wirklich löschen?') ?>');">
-                    <?= Assets::img('icons/16/blue/trash.png'); ?>
+                    <?= Assets::img('icons/blue/trash.svg'); ?>
                 </a>
                 <?php } ?>
             </td>
