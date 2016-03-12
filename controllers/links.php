@@ -63,7 +63,6 @@ class LinksController extends StudipController {
         }
         if (Request::isXhr()) {
             $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Link bearbeiten') : dgettext('supportplugin', 'Link hinzufügen'));
-            $this->response->add_header('X-No-Buttons', 1);
         }
     }
 
@@ -79,9 +78,9 @@ class LinksController extends StudipController {
         $link->description = Request::get('description');
         $link->position = intval(Request::get('position'));
         if ($link->store()) {
-            $this->flash['success'] = dgettext('supportplugin', 'Die Änderungen wurden gespeichert.');
+            PageLayout::postSuccess(dgettext('supportplugin', 'Die Änderungen wurden gespeichert.'));
         } else {
-            $this->flash['error'] = dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.');
+            PageLayout::postError(dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.'));
         }
         $this->redirect($this->url_for('links'));
     }
@@ -90,9 +89,9 @@ class LinksController extends StudipController {
         $link = SupportLink::find($id);
         $title = $link->title;
         if ($link->delete()) {
-            $this->flash['success'] = dgettext('supportplugin', sprintf('Der Eintrag "%s" wurde gelöscht.', htmlReady($title)));
+            PageLayout::postSuccess(dgettext('supportplugin', sprintf('Der Eintrag "%s" wurde gelöscht.', htmlReady($title))));
         } else {
-            $this->flash['error'] = dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelöscht werden.', htmlReady($title)));
+            PageLayout::postError(dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelöscht werden.', htmlReady($title))));
         }
         $this->redirect($this->url_for('links'));
     }

@@ -25,7 +25,7 @@ if ($links) {
         if ($i_am_root) {
     ?>
         <div class="actions">
-            <a href="<?= $controller->url_for('links/edit', $link->id) ?>" data-dialog="size:auto" title="<?= dgettext('supportplugin', 'Eintrag bearbeiten') ?>">
+            <a href="<?= $controller->url_for('links/edit', $link->id) ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', 'Eintrag bearbeiten') ?>">
                 <?= Assets::img('icons/16/blue/edit.png') ?></a>
             <a href="<?= $controller->url_for('links/delete', $link->id) ?>" title="<?= dgettext('supportplugin', 'Eintrag löschen') ?>">
                 <?= Assets::img('icons/16/blue/trash.png') ?></a>
