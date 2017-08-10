@@ -7,7 +7,7 @@
     ?>
     <fieldset>
         <legend>
-            <?= Assets::img('languages/' . $lang['picture']) ?>
+            <img src="<?= Assets::image_path('languages/' . $lang['picture']) ?>" alt="<?= $lang['name'] ?>">
             <?= htmlReady($lang['name']) ?>
         </legend>
         <label class="caption">

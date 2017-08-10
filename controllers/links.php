@@ -44,7 +44,7 @@ class LinksController extends StudipController {
         if ($this->i_am_root) {
             $actions = new ActionsWidget();
             $actions->addLink(
-                dgettext('supportplugin', "Link hinzufügen"),
+                dgettext('supportplugin', "Link hinzufÃ¼gen"),
                 $this->url_for('links/edit'),
                 'icons/blue/add.svg',
                 array('data-dialog' => 'size=auto;buttons=false')
@@ -62,7 +62,7 @@ class LinksController extends StudipController {
             $this->link = SupportLink::find($id);
         }
         if (Request::isXhr()) {
-            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Link bearbeiten') : dgettext('supportplugin', 'Link hinzufügen'));
+            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Link bearbeiten') : dgettext('supportplugin', 'Link hinzufÃ¼gen'));
         }
     }
 
@@ -78,9 +78,9 @@ class LinksController extends StudipController {
         $link->description = Request::get('description');
         $link->position = intval(Request::get('position'));
         if ($link->store()) {
-            PageLayout::postSuccess(dgettext('supportplugin', 'Die Änderungen wurden gespeichert.'));
+            PageLayout::postSuccess(dgettext('supportplugin', 'Die Ã„nderungen wurden gespeichert.'));
         } else {
-            PageLayout::postError(dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.'));
+            PageLayout::postError(dgettext('supportplugin', 'Die Ã„nderungen konnten nicht gespeichert werden.'));
         }
         $this->redirect($this->url_for('links'));
     }
@@ -89,9 +89,9 @@ class LinksController extends StudipController {
         $link = SupportLink::find($id);
         $title = $link->title;
         if ($link->delete()) {
-            PageLayout::postSuccess(dgettext('supportplugin', sprintf('Der Eintrag "%s" wurde gelöscht.', htmlReady($title))));
+            PageLayout::postSuccess(dgettext('supportplugin', sprintf('Der Eintrag "%s" wurde gelÃ¶scht.', htmlReady($title))));
         } else {
-            PageLayout::postError(dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelöscht werden.', htmlReady($title))));
+            PageLayout::postError(dgettext('supportplugin', sprintf('Der Eintrag "%s" konnte nicht gelÃ¶scht werden.', htmlReady($title))));
         }
         $this->redirect($this->url_for('links'));
     }

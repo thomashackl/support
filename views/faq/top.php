@@ -1,7 +1,7 @@
 <?php if ($faqs) { ?>
 <section class="contentbox">
     <header>
-        <h1><?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?></h1>
+        <h1><?= dgettext('supportplugin', 'HÃ¤ufig gestellte Fragen') ?></h1>
     </header>
     <?php
     foreach ($faqs as $f) {
@@ -22,6 +22,6 @@
     <?php } ?>
 </section>
 <div class="supportfaq-show-all">
-    <a href="<?= $allfaq ?>"><?= dgettext('supportplugin', 'Alle häufig gestellten Fragen anzeigen') ?></a>
+    <a href="<?= $allfaq ?>"><?= dgettext('supportplugin', 'Alle hÃ¤ufig gestellten Fragen anzeigen') ?></a>
 </div>
 <?php } ?>

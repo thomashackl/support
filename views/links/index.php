@@ -18,16 +18,16 @@ if ($links) {
     ?>
         <div class="actions">
             <a href="<?= $controller->url_for('links/edit', $link->id) ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', 'Eintrag bearbeiten') ?>">
-                <?= Assets::img('icons/blue/edit.svg') ?></a>
-            <a href="<?= $controller->url_for('links/delete', $link->id) ?>" title="<?= dgettext('supportplugin', 'Eintrag löschen') ?>">
-                <?= Assets::img('icons/blue/trash.svg') ?></a>
+                <?= Icon::create('edit', 'clickable') ?></a>
+            <a href="<?= $controller->url_for('links/delete', $link->id) ?>" title="<?= dgettext('supportplugin', 'Eintrag lÃ¶schen') ?>">
+                <?= Icon::create('trash', 'clickable') ?></a>
             <?php if ($i > 0) { ?>
             <a href="<?= $controller->url_for('links/down', $link->id) ?>" class="hidden-js" title="<?= dgettext('supportplugin', 'Eintrag hochsortieren') ?>">
-                <?= Assets::img('icons/blue/arr_1up.svg') ?></a>
+                <?= Icon::create('arr_1up', 'clickable') ?></a>
             <?php } ?>
             <?php if ($i < sizeof($links)-1) { ?>
             <a href="<?= $controller->url_for('links/up', $link->id) ?>" class="hidden-js" title="<?= dgettext('supportplugin', 'Eintrag runtersortieren') ?>">
-                <?= Assets::img('icons/blue/arr_1down.svg') ?></a>
+                <?= Icon::create('arr_1down', 'clickable') ?></a>
             <?php } ?>
         </div>
     <?php

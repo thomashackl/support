@@ -48,7 +48,7 @@ class CategoriesController extends StudipController {
         if ($this->editor) {
             $actions = new ActionsWidget();
             $actions->addLink(
-                dgettext('supportplugin', "Kategorie hinzufügen"),
+                dgettext('supportplugin', "Kategorie hinzufÃ¼gen"),
                 $this->url_for('categories/edit'),
                 'icons/blue/add.svg',
                 array('data-dialog' => 'size=auto')
@@ -66,7 +66,7 @@ class CategoriesController extends StudipController {
             $this->category = SupportFaqCategory::find($id);
         }
         if (Request::isXhr()) {
-            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Kategorie bearbeiten') : dgettext('supportplugin', 'Kategorie hinzufügen'));
+            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Kategorie bearbeiten') : dgettext('supportplugin', 'Kategorie hinzufÃ¼gen'));
         }
     }
 
@@ -96,9 +96,9 @@ class CategoriesController extends StudipController {
         }
         $c->translations = SimpleORMapCollection::createFromArray($translations);
         if ($c->store()) {
-            PageLayout::postSuccess(dgettext('supportplugin', 'Die Änderungen wurden gespeichert.'));
+            PageLayout::postSuccess(dgettext('supportplugin', 'Die Ã„nderungen wurden gespeichert.'));
         } else {
-            PageLayout::postError(dgettext('supportplugin', 'Die Änderungen konnten nicht gespeichert werden.'));
+            PageLayout::postError(dgettext('supportplugin', 'Die Ã„nderungen konnten nicht gespeichert werden.'));
         }
         $this->redirect($this->url_for('categories'));
     }
@@ -107,9 +107,9 @@ class CategoriesController extends StudipController {
         if ($this->editor) {
             $c = SupportFaqCategory::find($id);
             if ($c->delete()) {
-                PageLayout::postSuccess(dgettext('supportplugin', 'Die Kategorie wurde gelöscht.'));
+                PageLayout::postSuccess(dgettext('supportplugin', 'Die Kategorie wurde gelÃ¶scht.'));
             } else {
-                PageLayout::postError(dgettext('supportplugin', 'Die Kategorie konnte nicht gelöscht werden.'));
+                PageLayout::postError(dgettext('supportplugin', 'Die Kategorie konnte nicht gelÃ¶scht werden.'));
             }
         }
         $this->redirect($this->url_for('categories'));

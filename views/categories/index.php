@@ -1,6 +1,6 @@
 <?php if ($categories) { ?>
 <table class="default">
-    <caption><?= dgettext('supportplugin', 'Kategorien häufig gestellter Fragen') ?></caption>
+    <caption><?= dgettext('supportplugin', 'Kategorien hÃ¤ufig gestellter Fragen') ?></caption>
     <thead>
         <tr>
             <th width="80%">
@@ -23,10 +23,10 @@
             <? if ($editor) { ?>
             <td width="">
                 <a href="<?= $controller->url_for('categories/edit/'.$c->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Kategorie bearbeiten") ?>">
-                    <?= Assets::img('icons/blue/edit.svg'); ?>
+                    <?= Icon::create('edit', 'clickable'); ?>
                 </a>
-                <a href="<?= $controller->url_for('categories/delete/'.$c->id); ?>" title="<?= dgettext('supportplugin', "Kategorie löschen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Kategorie wirklich löschen?') ?>');">
-                    <?= Assets::img('icons/blue/trash.svg'); ?>
+                <a href="<?= $controller->url_for('categories/delete/'.$c->id); ?>" title="<?= dgettext('supportplugin', "Kategorie lÃ¶schen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Kategorie wirklich lÃ¶schen?') ?>');">
+                    <?= Icon::create('trash', 'clickable'); ?>
                 </a>
                 <?php } ?>
             </td>
@@ -36,5 +36,5 @@
     </tbody>
 </table>
 <?php } else { ?>
-    <?= MessageBox::info(dgettext('supportplugin', 'Es sind keine Kategorien für häufig gestellte Fragen vorhanden.')) ?>
+    <?= MessageBox::info(dgettext('supportplugin', 'Es sind keine Kategorien fÃ¼r hÃ¤ufig gestellte Fragen vorhanden.')) ?>
 <?php } ?>

@@ -9,13 +9,13 @@ if ($faqs) {
 <section class="contentbox" id="supportfaqs" data-sort-url="'<?= $url ?>'">
     <header>
         <h1>
-            <?= dgettext('supportplugin', 'Häufig gestellte Fragen') ?>
+            <?= dgettext('supportplugin', 'HÃ¤ufig gestellte Fragen') ?>
             <?= $category ? ' - '.htmlReady($category->getTranslationByLanguage($lang)->name) : '' ?>
         </h1>
         <nav>
             <? if ($editor) { ?>
-            <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufügen") ?>">
-                <?= Assets::img('icons/blue/add.svg'); ?>
+            <a href="<?= $controller->url_for('faq/edit'); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort hinzufÃ¼gen") ?>">
+                <?= Icon::create('add', 'clickable'); ?>
             </a>
             <? } ?>
         </nav>
@@ -45,10 +45,10 @@ if ($faqs) {
                 ?>
                 <?php if ($editor) { ?>
                 <a href="<?= $controller->url_for('faq/edit/'.$f->id); ?>" data-dialog="size=auto" title="<?= dgettext('supportplugin', "Frage/Antwort bearbeiten") ?>">
-                    <?= Assets::img('icons/blue/edit.svg'); ?>
+                    <?= Icon::create('edit', 'clickable'); ?>
                 </a>
-                <a href="<?= $controller->url_for('faq/delete/'.$f->id); ?>" title="<?= dgettext('supportplugin', "Frage/Antwort löschen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Eintrag wirklich löschen?') ?>');">
-                    <?= Assets::img('icons/blue/trash.svg'); ?>
+                <a href="<?= $controller->url_for('faq/delete/'.$f->id); ?>" title="<?= dgettext('supportplugin', "Frage/Antwort lÃ¶schen") ?>" onclick="return window.confirm('<?= dgettext('supportplugin', 'Eintrag wirklich lÃ¶schen?') ?>');">
+                    <?= Icon::create('trash', 'clickable'); ?>
                 </a>
                 <?php } ?>
             </nav>
@@ -63,11 +63,11 @@ if ($faqs) {
 <section>
     <?php if ($category) { ?>
     <?= MessageBox::info(sprintf(
-            dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen in der Kategorie "%s" vorhanden.'),
+            dgettext('supportplugin', 'Es sind keine hÃ¤ufig gestellten Fragen in der Kategorie "%s" vorhanden.'),
             $category->getTranslationByLanguage($lang)->name
             )) ?>
     <?php } else { ?>
-    <?= MessageBox::info(dgettext('supportplugin', 'Es sind keine häufig gestellten Fragen vorhanden.')) ?>
+    <?= MessageBox::info(dgettext('supportplugin', 'Es sind keine hÃ¤ufig gestellten Fragen vorhanden.')) ?>
     <?php } ?>
 </section>
 <?php

@@ -11,7 +11,7 @@
         }
     ?>
         <label class="caption">
-            <?= Assets::img('languages/' . $lang['picture']) ?>
+            <img src="<?= Assets::image_path('languages/' . $lang['picture']) ?>" alt="<?= $lang['name'] ?>">
             <?= htmlReady($lang['name']) ?>
             <input type="text" name="translation[<?= $key ?>][name]" value="<?= $t ? htmlReady($t->name) : '' ?>" size="75" maxlength="255"/>
         </label>

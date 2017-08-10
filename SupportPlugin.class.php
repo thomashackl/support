@@ -47,11 +47,11 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             $navigation->addSubnavigation('links', $linksNavi);
 
         }
-        $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+        $faqNavi = new Navigation(dgettext('supportplugin', 'HÃ¤ufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
         $faqNavi->setImage('icons/white/question-circle.svg');
         $faqNavi->setActiveImage('icons/black/question-circle.svg');
         if ($GLOBALS['perm']->have_perm('root') || $support) {
-            $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+            $faqlistNavi = new Navigation(dgettext('supportplugin', 'HÃ¤ufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
             $faqNavi->addSubnavigation('faqs', $faqlistNavi);
             $categoriesNavi = new Navigation(dgettext('supportplugin', 'Kategorien'), PluginEngine::getURL($this, array(), 'categories'));
             $faqNavi->addSubnavigation('categories', $categoriesNavi);
@@ -61,7 +61,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
 
         // Integrate FAQs in Podium search.
         if (class_exists('Podium')) {
-            Podium::addType('faq', dgettext('supportplugin', 'Häufig gestellte Fragen'),
+            Podium::addType('faq', dgettext('supportplugin', 'HÃ¤ufig gestellte Fragen'),
                 array($this, 'getPodiumSQL'), array($this, 'getPodiumFilter'));
         }
 
