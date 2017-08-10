@@ -51,7 +51,6 @@ class FaqController extends StudipController {
         } else {
             Navigation::activateItem('/support/faq');
         }
-        $this->set_content_type('text/html;charset=windows-1252');
     }
 
     public function index_action($category = '') {
@@ -73,7 +72,7 @@ class FaqController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Frage/Antwort hinzufügen"),
                 $this->url_for('faq/edit'),
-                'icons/blue/add.svg',
+                Icon::create('add', 'clickable'),
                 array('data-dialog' => 'size=auto')
             );
             $this->sidebar->addWidget($actions);

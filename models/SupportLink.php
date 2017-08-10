@@ -18,7 +18,7 @@ class SupportLink extends SimpleORMap {
 
     public static function configure($config=array()) {
         $config['db_table'] = 'supportplugin_links';
-        parent::__construct($config);
+        parent::configure($config);
     }
 
 }

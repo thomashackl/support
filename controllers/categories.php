@@ -42,7 +42,6 @@ class CategoriesController extends StudipController {
         }
         PageLayout::addStylesheet($css);
         Navigation::activateItem('/support/faq/categories');
-        $this->set_content_type('text/html;charset=windows-1252');
         $this->sidebar = Sidebar::get();
         $this->sidebar->setImage($this->dispatcher->plugin->getPluginURL().'/assets/images/sidebar-support.png');
         if ($this->editor) {

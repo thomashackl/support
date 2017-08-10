@@ -38,7 +38,6 @@ class LinksController extends StudipController {
             PageLayout::addScript($js);
         }
         Navigation::activateItem('/support/links');
-        $this->set_content_type('text/html;charset=windows-1252');
         $sidebar = Sidebar::get();
         $sidebar->setImage($this->dispatcher->plugin->getPluginURL().'/assets/images/sidebar-support.png');
         if ($this->i_am_root) {
@@ -46,7 +45,7 @@ class LinksController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Link hinzufügen"),
                 $this->url_for('links/edit'),
-                'icons/blue/add.svg',
+                Icon::create('add', 'clickable'),
                 array('data-dialog' => 'size=auto;buttons=false')
             );
             $sidebar->addWidget($actions);

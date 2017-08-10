@@ -39,7 +39,6 @@ class SearchController extends StudipController {
             $this->search->defaultValue(Request::option('searchterm'), Request::get('searchterm_parameter'));
         }
         $this->search = $this->search->render();
-        $this->set_content_type('text/html;charset=windows-1252');
     }
 
     public function index_action() {

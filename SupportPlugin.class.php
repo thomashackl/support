@@ -35,21 +35,16 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         bindtextdomain('supportplugin', realpath(dirname(__FILE__).'/locale'));
         $active = $GLOBALS['perm']->have_perm('root') || $support ? 'search' : 'faq';
         $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), $active));
-        $navigation->setImage($this->getPluginURL().'/assets/images/support.svg', array('title' => _('Support')));
+        //$navigation->setImage($this->getPluginURL().'/assets/images/support.svg', array('title' => _('Support')));
+        $navigation->setImage(Icon::create('support', 'navigation', array('title' => _('Support'))));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
-            $searchNavi->setImage('icons/white/search.svg');
-            $searchNavi->setActiveImage('icons/black/search.svg');
             $navigation->addSubnavigation('search', $searchNavi);
             $linksNavi = new Navigation(dgettext('supportplugin', 'Wichtige Links'), PluginEngine::getURL($this, array(), 'links'));
-            $linksNavi->setImage('icons/white/link-intern.svg');
-            $linksNavi->setActiveImage('icons/black/link-intern.svg');
             $navigation->addSubnavigation('links', $linksNavi);
 
         }
         $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
-        $faqNavi->setImage('icons/white/question-circle.svg');
-        $faqNavi->setActiveImage('icons/black/question-circle.svg');
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
             $faqNavi->addSubnavigation('faqs', $faqlistNavi);
