@@ -36,7 +36,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         $active = $GLOBALS['perm']->have_perm('root') || $support ? 'search' : 'faq';
         $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), $active));
         //$navigation->setImage($this->getPluginURL().'/assets/images/support.svg', array('title' => _('Support')));
-        $navigation->setImage(Icon::create('support', 'navigation', array('title' => _('Support'))));
+        $navigation->setImage(Icon::create('rescue', 'navigation', array('title' => _('Support'))));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
             $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
             $navigation->addSubnavigation('search', $searchNavi);
