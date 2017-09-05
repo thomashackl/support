@@ -48,6 +48,8 @@ class SearchController extends StudipController {
         } else {
             $this->selected_semester = $current_semester->id;
         }
+        PageLayout::setTitle(
+            $this->plugin->getDisplayName() . ' - ' . dgettext('supportplugin', 'Suche'));
     }
 
     public function result_action() {
@@ -77,6 +79,8 @@ class SearchController extends StudipController {
                     break;
             }
         }
+        PageLayout::setTitle(
+            $this->plugin->getDisplayName() . ' - ' . dgettext('supportplugin', 'Suchergebnis'));
     }
 
     function redirect_action($id) {

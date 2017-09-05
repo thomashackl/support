@@ -54,6 +54,8 @@ class LinksController extends StudipController {
 
     public function index_action() {
         $this->links = SupportLink::findBySQL("1 ORDER BY `position`, `title`");
+        PageLayout::setTitle(
+            $this->plugin->getDisplayName() . ' - ' . dgettext('supportplugin', 'Wichtige Links'));
     }
 
     public function edit_action($id='') {

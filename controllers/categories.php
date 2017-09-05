@@ -58,6 +58,8 @@ class CategoriesController extends StudipController {
 
     public function index_action() {
         $this->categories = SupportFaqCategory::getAll($this->lang);
+        PageLayout::setTitle(
+            $this->plugin->getDisplayName() . ' - ' . dgettext('supportplugin', 'Kategorien'));
     }
 
     public function edit_action($id='') {

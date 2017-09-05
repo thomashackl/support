@@ -1,4 +1,3 @@
-<h1><?= dgettext('supportplugin', 'Suchergebnisse') ?></h1>
 <?= $this->render_partial('search/_search') ?>
 <?php if (!$persons && !$courses && !$institutes) { ?>
 <?= MessageBox::info(sprintf(dgettext('supportplugin', 'Es wurden keine Ergebnisse für den Suchbegriff "%s" gefunden.'), $searchterm)); ?>

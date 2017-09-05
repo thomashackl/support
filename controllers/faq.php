@@ -87,6 +87,8 @@ class FaqController extends StudipController {
                 ->setActive($c->id == $category);
         }
         $this->sidebar->addWidget($categories);
+        PageLayout::setTitle(
+            $this->plugin->getDisplayName() . ' - ' . dgettext('supportplugin', 'Häufig gestellte Fragen'));
     }
 
     public function edit_action($id='') {

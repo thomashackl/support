@@ -1,6 +1,5 @@
 <?php if ($categories) { ?>
 <table class="default">
-    <caption><?= dgettext('supportplugin', 'Kategorien häufig gestellter Fragen') ?></caption>
     <thead>
         <tr>
             <th width="80%">
