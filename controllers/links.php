@@ -46,7 +46,7 @@ class LinksController extends StudipController {
                 dgettext('supportplugin', "Link hinzufügen"),
                 $this->url_for('links/edit'),
                 Icon::create('add', 'clickable'),
-                array('data-dialog' => 'size=auto;buttons=false')
+                array('data-dialog' => 'size=auto')
             );
             $sidebar->addWidget($actions);
         }
@@ -60,9 +60,9 @@ class LinksController extends StudipController {
         if ($id) {
             $this->link = SupportLink::find($id);
         }
-        if (Request::isXhr()) {
-            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Link bearbeiten') : dgettext('supportplugin', 'Link hinzufügen'));
-        }
+        PageLayout::setTitle($id ?
+            dgettext('supportplugin', 'Link bearbeiten') :
+            dgettext('supportplugin', 'Link hinzufügen'));
     }
 
     public function save_action() {

@@ -1,14 +1,14 @@
 <form class="default" action="<?= $controller->url_for('faq/save') ?>" method="post">
     <?php
-    foreach ($GLOBALS['INSTALLED_LANGUAGES'] as $key => $lang) {
+    foreach ($GLOBALS['INSTALLED_LANGUAGES'] as $key => $language) {
         if ($faq) {
             $t = $faq->getTranslationByLanguage($key, true);
         }
     ?>
     <fieldset>
         <legend>
-            <img src="<?= Assets::image_path('languages/' . $lang['picture']) ?>" alt="<?= $lang['name'] ?>">
-            <?= htmlReady($lang['name']) ?>
+            <img src="<?= Assets::image_path('languages/' . $language['picture']) ?>" alt="<?= $language['name'] ?>">
+            <?= htmlReady($language['name']) ?>
         </legend>
         <label class="caption">
             <?= dgettext('supportplugin', 'Frage') ?>

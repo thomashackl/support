@@ -49,7 +49,7 @@ class CategoriesController extends StudipController {
             $actions->addLink(
                 dgettext('supportplugin', "Kategorie hinzufügen"),
                 $this->url_for('categories/edit'),
-                'icons/blue/add.svg',
+                Icon::create('add', 'clickable'),
                 array('data-dialog' => 'size=auto')
             );
             $this->sidebar->addWidget($actions);
@@ -64,9 +64,9 @@ class CategoriesController extends StudipController {
         if ($id) {
             $this->category = SupportFaqCategory::find($id);
         }
-        if (Request::isXhr()) {
-            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Kategorie bearbeiten') : dgettext('supportplugin', 'Kategorie hinzufügen'));
-        }
+        PageLayout::setTitle($id ?
+            dgettext('supportplugin', 'Kategorie bearbeiten') :
+            dgettext('supportplugin', 'Kategorie hinzufügen'));
     }
 
     public function save_action() {

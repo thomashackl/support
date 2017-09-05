@@ -100,9 +100,9 @@ class FaqController extends StudipController {
         } else {
             $this->faqcats = array();
         }
-        if (Request::isXhr()) {
-            $this->response->add_header('X-Title', $id ? dgettext('supportplugin', 'Frage/Antwort bearbeiten') : dgettext('supportplugin', 'Frage/Antwort hinzufügen'));
-        }
+        PageLayout::setTitle($id ?
+            dgettext('supportplugin', 'Frage/Antwort bearbeiten') :
+            dgettext('supportplugin', 'Frage/Antwort hinzufügen'));
     }
 
     public function save_action() {
