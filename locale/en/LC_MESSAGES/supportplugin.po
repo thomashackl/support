@@ -8,19 +8,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-09-19 16:45+0200\n"
-"PO-Revision-Date: 2015-05-21 09:41+0200\n"
-"Last-Translator: Thomas <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English <http://example.com/weblate/projects/studip/"
-"supportplugin/en/>\n"
+"PO-Revision-Date: 2017-09-19 14:54+0000\n"
+"Last-Translator: Thomas Hackl <Thomas.Hackl@uni-passau.de>\n"
+"Language-Team: English "
+"<https://example.com/weblate/projects/studip/support/en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.3-dev\n"
+"X-Generator: Weblate 2.16\n"
 
 #: controllers/categories.php:50 controllers/categories.php:71
-#, fuzzy
 msgid "Kategorie hinzufügen"
 msgstr "Add new category"
 
@@ -35,23 +34,19 @@ msgstr "Edit category"
 
 #: controllers/categories.php:100 controllers/faq.php:145
 #: controllers/links.php:82
-#, fuzzy
 msgid "Die Änderungen wurden gespeichert."
 msgstr "Your changes have been saved."
 
 #: controllers/categories.php:102 controllers/faq.php:147
 #: controllers/links.php:84
-#, fuzzy
 msgid "Die Änderungen konnten nicht gespeichert werden."
 msgstr "The changes could not be saved."
 
 #: controllers/categories.php:111
-#, fuzzy
 msgid "Die Kategorie wurde gelöscht."
-msgstr "Category deleted."
+msgstr "The category has been deleted."
 
 #: controllers/categories.php:113
-#, fuzzy
 msgid "Die Kategorie konnte nicht gelöscht werden."
 msgstr "The category could not be deleted."
 
@@ -68,7 +63,6 @@ msgid "Antwort"
 msgstr "Answer"
 
 #: controllers/faq.php:73 controllers/faq.php:107 views/faq/index.php:17
-#, fuzzy
 msgid "Frage/Antwort hinzufügen"
 msgstr "Add new question/answer"
 
@@ -78,7 +72,6 @@ msgstr "All categories"
 
 #: controllers/faq.php:91 SupportPlugin.class.php:46 SupportPlugin.class.php:48
 #: SupportPlugin.class.php:58 views/faq/index.php:12 views/faq/top.php:4
-#, fuzzy
 msgid "Häufig gestellte Fragen"
 msgstr "Frequently asked questions"
 
@@ -87,17 +80,14 @@ msgid "Frage/Antwort bearbeiten"
 msgstr "Edit question/answer"
 
 #: controllers/faq.php:156
-#, fuzzy
 msgid "Der Eintrag wurde gelöscht."
-msgstr "Entry deleted."
+msgstr "The entry has been deleted."
 
 #: controllers/faq.php:158
-#, fuzzy
 msgid "Der Eintrag konnte nicht gelöscht werden."
 msgstr "The entry could not be deleted."
 
 #: controllers/links.php:46 controllers/links.php:67
-#, fuzzy
 msgid "Link hinzufügen"
 msgstr "Add new link"
 
@@ -118,7 +108,6 @@ msgid "Suche"
 msgstr "Search"
 
 #: controllers/search.php:83
-#, fuzzy
 msgid "Suchergebnis"
 msgstr "Search results"
 
@@ -147,17 +136,14 @@ msgid "Aktionen"
 msgstr "Actions"
 
 #: views/categories/index.php:27
-#, fuzzy
 msgid "Kategorie löschen"
 msgstr "Delete category"
 
 #: views/categories/index.php:27
-#, fuzzy
 msgid "Kategorie wirklich löschen?"
 msgstr "Really delete category?"
 
 #: views/categories/index.php:38
-#, fuzzy
 msgid "Es sind keine Kategorien für häufig gestellte Fragen vorhanden."
 msgstr "No frequently asked question categories have been found."
 
@@ -166,28 +152,24 @@ msgid "Kategoriezuordnung"
 msgstr "Category assignment"
 
 #: views/faq/index.php:50
-#, fuzzy
 msgid "Frage/Antwort löschen"
 msgstr "Delete question/answer"
 
 #: views/faq/index.php:50
-#, fuzzy
 msgid "Eintrag wirklich löschen?"
 msgstr "Really delete entry?"
 
 #: views/faq/index.php:66
-#, fuzzy, php-format
+#, php-format
 msgid ""
 "Es sind keine häufig gestellten Fragen in der Kategorie \"%s\" vorhanden."
 msgstr "No frequently asked questions have been found in the category \"%s\"."
 
 #: views/faq/index.php:70
-#, fuzzy
 msgid "Es sind keine häufig gestellten Fragen vorhanden."
 msgstr "No frequently asked questions have been found."
 
 #: views/faq/top.php:25
-#, fuzzy
 msgid "Alle häufig gestellten Fragen anzeigen"
 msgstr "Show all frequently asked questions"
 
@@ -212,7 +194,6 @@ msgid "Eintrag bearbeiten"
 msgstr "Edit entry"
 
 #: views/links/index.php:22
-#, fuzzy
 msgid "Eintrag löschen"
 msgstr "Delete entry"
 
@@ -229,7 +210,6 @@ msgid "Es sind keine Links vorhanden."
 msgstr "No links have been found."
 
 #: views/search/_search.php:6
-#, fuzzy
 msgid "Semester für Veranstaltungen:"
 msgstr "Indicate semester for course search:"
 
@@ -238,7 +218,7 @@ msgid "alle"
 msgstr "all"
 
 #: views/search/result.php:3
-#, fuzzy, php-format
+#, php-format
 msgid "Es wurden keine Ergebnisse für den Suchbegriff \"%s\" gefunden."
 msgstr "No results were found for search query \"%s\"."
 
