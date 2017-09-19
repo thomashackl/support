@@ -102,7 +102,7 @@ class SupportFaq extends SimpleORMap {
         $translation = null;
         $default = null;
         foreach ($this->translations as $t) {
-            if ($t->lang == $GLOBALS['DEFAULT_LANGUAGE'] && !$strict) {
+            if ($t->lang == Config::get()->DEFAULT_LANGUAGE && !$strict) {
                 $default = $t;
             } else if ($t->lang == $lang) {
                 $translation = $t;

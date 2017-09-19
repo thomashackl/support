@@ -62,7 +62,7 @@ class SupportFaqCategory extends SimpleORMap {
         $translation = null;
         $default = null;
         foreach ($this->translations as $t) {
-            if ($t->lang == $GLOBALS['DEFAULT_LANGUAGE'] && !$strict) {
+            if ($t->lang == Config::get()->DEFAULT_LANGUAGE && !$strict) {
                 $default = $t;
             }
             if ($t->lang == $lang) {

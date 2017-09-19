@@ -97,7 +97,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             return null;
         }
         $query = DBManager::get()->quote("%$search%");
-        $lang = $GLOBALS['user']->preferred_language ?: $GLOBALS['DEFAULT_LANGUAGE'];
+        $lang = $GLOBALS['user']->preferred_language ?: Config::get()->DEFAULT_LANGUAGE;
         $sql = "SELECT 'faq' AS type, f.`faq_id` AS id
             FROM `supportplugin_faq` f
                 JOIN `supportplugin_faq_i18n` i ON (f.`faq_id`=i.`faq_id` AND i.`lang`='$lang')

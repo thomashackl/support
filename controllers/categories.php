@@ -34,7 +34,7 @@ class CategoriesController extends StudipController {
          */
         $this->lang = $GLOBALS['user']->id != 'nobody' ?
             $GLOBALS['user']->preferred_language : $_SESSION['_language'] ?:
-                $GLOBALS['DEFAULT_LANGUAGE'];
+                Config::get()->DEFAULT_LANGUAGE;
         if (Studip\ENV == 'development') {
             $css = $this->plugin->getPluginURL().'/assets/stylesheets/supportplugin.css';
         } else {
