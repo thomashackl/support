@@ -1,5 +1,5 @@
 <?php
-class Faq extends DBMigration
+class Faq extends Migration
 {
     function up() {
         DBManager::get()->exec("CREATE TABLE IF NOT EXISTS `supportplugin_faq` (

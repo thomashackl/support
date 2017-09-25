@@ -2,7 +2,7 @@
 
 require_once(__DIR__.'/../models/SupportFaq.php');
 
-class FaqCategories extends DBMigration
+class FaqCategories extends Migration
 {
     function up() {
         DBManager::get()->exec("ALTER TABLE `supportplugin_faq` CHANGE `id` `faq_id` VARCHAR(32) NOT NULL");

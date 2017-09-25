@@ -1,5 +1,5 @@
 <?php
-class Content extends DBMigration
+class Content extends Migration
 {
     function up() {
         DBManager::get()->exec("CREATE TABLE IF NOT EXISTS `supportplugin_links` (
