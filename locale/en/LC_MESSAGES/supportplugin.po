@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-10 13:20+0200\n"
-"PO-Revision-Date: 2017-09-19 14:54+0000\n"
+"PO-Revision-Date: 2018-09-10 16:01+0200\n"
 "Last-Translator: Thomas Hackl <Thomas.Hackl@uni-passau.de>\n"
 "Language-Team: English <https://example.com/weblate/projects/studip/support/"
 "en/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.16\n"
+"X-Generator: Poedit 2.1.1\n"
 
 #: models/SupportSearch.php:25
 msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
@@ -48,12 +48,11 @@ msgstr "Categories"
 
 #: SupportPlugin.class.php:60
 msgid "Supportanfrage stellen"
-msgstr ""
+msgstr "Create support request"
 
 #: controllers/ticket.php:37
-#, fuzzy
 msgid "Supportanfrage"
-msgstr "Support"
+msgstr "Support request"
 
 #: controllers/search.php:33
 msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
@@ -258,24 +257,23 @@ msgstr "Sort order"
 
 #: views/ticket/index.php:4
 msgid "Ihre Anfrage"
-msgstr ""
+msgstr "Your query"
 
 #: views/ticket/index.php:7
 msgid "Absender"
-msgstr ""
+msgstr "Sender"
 
 #: views/ticket/index.php:14
 msgid "Betreff"
-msgstr ""
+msgstr "Subject"
 
 #: views/ticket/index.php:18
-#, fuzzy
 msgid "Geben Sie hier den Betreff Ihrer Anfrage ein..."
-msgstr "Enter your search term here."
+msgstr "Enter your request subject here."
 
 #: views/ticket/index.php:24
 msgid "Anfrage/Fehlermeldung"
-msgstr ""
+msgstr "Request/Error report"
 
 #: views/ticket/index.php:28
 msgid ""
@@ -285,28 +283,34 @@ msgid ""
 "genauen Text der Fehlermeldung, am besten, indem Sie einen Screenshot "
 "hinzufügen."
 msgstr ""
+"Enter your message here. Please describe errors as detailed as possible, "
+"providing your Operation System, Browser and describing the actions you "
+"executed that lead to the error message. Please also provide the exact "
+"error message, e.g. by uploading a screenshot."
 
 #: views/ticket/index.php:37
 msgid "Datei(en)"
-msgstr ""
+msgstr "File(s)"
 
 #: views/ticket/index.php:41
 msgid "Datei(en) hochladen"
-msgstr ""
+msgstr "Upload file(s)"
 
 #: views/ticket/index.php:46
 msgid ""
 "Laden Sie hier Screenhots oder weitere Dateien hoch. Mit Strg bzw. Command "
 "können Sie mehrere Dateien auswählen."
 msgstr ""
+"Upload screenshots or other files here. You can select multiple files by "
+"pressing Ctrl or Cmd."
 
 #: views/ticket/index.php:50
 msgid "Datei(en) auswählen"
-msgstr ""
+msgstr "Choose file(s)"
 
 #: views/ticket/index.php:56
 msgid "Anfrage abschicken"
-msgstr ""
+msgstr "Send support request"
 
 #: views/categories/index.php:6 views/categories/edit.php:5
 msgid "Name der Kategorie"
