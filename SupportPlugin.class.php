@@ -56,7 +56,7 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
             $faqNavi->addSubnavigation('categories', $categoriesNavi);
         }
         $navigation->addSubnavigation('faq', $faqNavi);
-        if ($GLOBALS['user']->username !== 'nobody') {
+        if ($GLOBALS['user']->id !== 'nobody') {
             $ticketNavi = new Navigation(dgettext('supportplugin', 'Supportanfrage stellen'),
                 PluginEngine::getURL($this, array(), 'ticket'));
             $navigation->addSubnavigation('ticket', $ticketNavi);
