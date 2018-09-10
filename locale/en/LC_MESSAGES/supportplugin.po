@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-19 16:45+0200\n"
+"POT-Creation-Date: 2018-09-10 13:20+0200\n"
 "PO-Revision-Date: 2017-09-19 14:54+0000\n"
 "Last-Translator: Thomas Hackl <Thomas.Hackl@uni-passau.de>\n"
-"Language-Team: English "
-"<https://example.com/weblate/projects/studip/support/en/>\n"
+"Language-Team: English <https://example.com/weblate/projects/studip/support/"
+"en/>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,36 +19,49 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.16\n"
 
-#: controllers/categories.php:50 controllers/categories.php:71
-msgid "Kategorie hinzufügen"
-msgstr "Add new category"
+#: models/SupportSearch.php:25
+msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
+msgstr "Search for courses, people or organisational units"
 
-#: controllers/categories.php:62 controllers/faq.php:81
-#: SupportPlugin.class.php:50
+#: SupportPlugin.class.php:38 SupportPlugin.class.php:78
+msgid "Support"
+msgstr "Support"
+
+#: SupportPlugin.class.php:40 controllers/search.php:52
+msgid "Suche"
+msgstr "Search"
+
+#: SupportPlugin.class.php:43 controllers/links.php:58
+msgid "Wichtige Links"
+msgstr "Important links"
+
+#: SupportPlugin.class.php:48 SupportPlugin.class.php:51
+#: SupportPlugin.class.php:68 controllers/faq.php:91 views/faq/index.php:12
+#: views/faq/top.php:4
+msgid "Häufig gestellte Fragen"
+msgstr "Frequently asked questions"
+
+#: SupportPlugin.class.php:54 controllers/faq.php:81
+#: controllers/categories.php:62
 msgid "Kategorien"
 msgstr "Categories"
 
-#: controllers/categories.php:70 views/categories/index.php:24
-msgid "Kategorie bearbeiten"
-msgstr "Edit category"
+#: SupportPlugin.class.php:60
+msgid "Supportanfrage stellen"
+msgstr ""
 
-#: controllers/categories.php:100 controllers/faq.php:145
-#: controllers/links.php:82
-msgid "Die Änderungen wurden gespeichert."
-msgstr "Your changes have been saved."
+#: controllers/ticket.php:37
+#, fuzzy
+msgid "Supportanfrage"
+msgstr "Support"
 
-#: controllers/categories.php:102 controllers/faq.php:147
-#: controllers/links.php:84
-msgid "Die Änderungen konnten nicht gespeichert werden."
-msgstr "The changes could not be saved."
+#: controllers/search.php:33
+msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
+msgstr "Search here for courses, people or organisational units"
 
-#: controllers/categories.php:111
-msgid "Die Kategorie wurde gelöscht."
-msgstr "The category has been deleted."
-
-#: controllers/categories.php:113
-msgid "Die Kategorie konnte nicht gelöscht werden."
-msgstr "The category could not be deleted."
+#: controllers/search.php:83
+msgid "Suchergebnis"
+msgstr "Search results"
 
 #: controllers/faq.php:66
 msgid "Fragen/Antworten durchsuchen"
@@ -70,14 +83,19 @@ msgstr "Add new question/answer"
 msgid "Alle Kategorien"
 msgstr "All categories"
 
-#: controllers/faq.php:91 SupportPlugin.class.php:46 SupportPlugin.class.php:48
-#: SupportPlugin.class.php:58 views/faq/index.php:12 views/faq/top.php:4
-msgid "Häufig gestellte Fragen"
-msgstr "Frequently asked questions"
-
 #: controllers/faq.php:106 views/faq/index.php:47
 msgid "Frage/Antwort bearbeiten"
 msgstr "Edit question/answer"
+
+#: controllers/faq.php:145 controllers/links.php:82
+#: controllers/categories.php:100
+msgid "Die Änderungen wurden gespeichert."
+msgstr "Your changes have been saved."
+
+#: controllers/faq.php:147 controllers/links.php:84
+#: controllers/categories.php:102
+msgid "Die Änderungen konnten nicht gespeichert werden."
+msgstr "The changes could not be saved."
 
 #: controllers/faq.php:156
 msgid "Der Eintrag wurde gelöscht."
@@ -91,65 +109,25 @@ msgstr "The entry could not be deleted."
 msgid "Link hinzufügen"
 msgstr "Add new link"
 
-#: controllers/links.php:58 SupportPlugin.class.php:42
-msgid "Wichtige Links"
-msgstr "Important links"
-
 #: controllers/links.php:66
 msgid "Link bearbeiten"
 msgstr "Edit link"
 
-#: controllers/search.php:33
-msgid "Suchen Sie hier nach Veranstaltungen, Personen und Einrichtungen"
-msgstr "Search here for courses, people or organisational units"
+#: controllers/categories.php:50 controllers/categories.php:71
+msgid "Kategorie hinzufügen"
+msgstr "Add new category"
 
-#: controllers/search.php:52 SupportPlugin.class.php:40
-msgid "Suche"
-msgstr "Search"
+#: controllers/categories.php:70 views/categories/index.php:24
+msgid "Kategorie bearbeiten"
+msgstr "Edit category"
 
-#: controllers/search.php:83
-msgid "Suchergebnis"
-msgstr "Search results"
+#: controllers/categories.php:111
+msgid "Die Kategorie wurde gelöscht."
+msgstr "The category has been deleted."
 
-#: models/SupportSearch.php:25
-msgid "Suche nach Veranstaltungen, Personen und Einrichtungen"
-msgstr "Search for courses, people or organisational units"
-
-#: SupportPlugin.class.php:38 SupportPlugin.class.php:68
-msgid "Support"
-msgstr "Support"
-
-#: views/categories/edit.php:5 views/categories/index.php:6
-msgid "Name der Kategorie"
-msgstr "Category name"
-
-#: views/categories/edit.php:27 views/faq/edit.php:44 views/links/edit.php:31
-msgid "Speichern"
-msgstr "Save"
-
-#: views/categories/edit.php:28 views/faq/edit.php:45 views/links/edit.php:32
-msgid "Abbrechen"
-msgstr "Cancel"
-
-#: views/categories/index.php:9
-msgid "Aktionen"
-msgstr "Actions"
-
-#: views/categories/index.php:27
-msgid "Kategorie löschen"
-msgstr "Delete category"
-
-#: views/categories/index.php:27
-msgid "Kategorie wirklich löschen?"
-msgstr "Really delete category?"
-
-#: views/categories/index.php:38
-msgid "Es sind keine Kategorien für häufig gestellte Fragen vorhanden."
-msgstr "No frequently asked question categories have been found."
-
-#: views/faq/edit.php:29
-msgid "Kategoriezuordnung"
-msgstr "Category assignment"
+#: controllers/categories.php:113
+msgid "Die Kategorie konnte nicht gelöscht werden."
+msgstr "The category could not be deleted."
 
 #: views/faq/index.php:50
 msgid "Frage/Antwort löschen"
@@ -173,49 +151,17 @@ msgstr "No frequently asked questions have been found."
 msgid "Alle häufig gestellten Fragen anzeigen"
 msgstr "Show all frequently asked questions"
 
-#: views/links/edit.php:4
-msgid "Linkziel"
-msgstr "Link target"
+#: views/faq/edit.php:29
+msgid "Kategoriezuordnung"
+msgstr "Category assignment"
 
-#: views/links/edit.php:10
-msgid "Titel des Links"
-msgstr "Link title"
+#: views/faq/edit.php:44 views/links/edit.php:31 views/categories/edit.php:27
+msgid "Speichern"
+msgstr "Save"
 
-#: views/links/edit.php:16
-msgid "Beschreibungstext"
-msgstr "Description"
-
-#: views/links/edit.php:22
-msgid "Reihenfolge"
-msgstr "Sort order"
-
-#: views/links/index.php:20
-msgid "Eintrag bearbeiten"
-msgstr "Edit entry"
-
-#: views/links/index.php:22
-msgid "Eintrag löschen"
-msgstr "Delete entry"
-
-#: views/links/index.php:25
-msgid "Eintrag hochsortieren"
-msgstr "Move entry up"
-
-#: views/links/index.php:29
-msgid "Eintrag runtersortieren"
-msgstr "Move entry down"
-
-#: views/links/index.php:43
-msgid "Es sind keine Links vorhanden."
-msgstr "No links have been found."
-
-#: views/search/_search.php:6
-msgid "Semester für Veranstaltungen:"
-msgstr "Indicate semester for course search:"
-
-#: views/search/_search.php:8
-msgid "alle"
-msgstr "all"
+#: views/faq/edit.php:45 views/links/edit.php:32 views/categories/edit.php:28
+msgid "Abbrechen"
+msgstr "Cancel"
 
 #: views/search/result.php:3
 #, php-format
@@ -266,6 +212,122 @@ msgstr "Institutes"
 msgid "Zur Einrichtung %s"
 msgstr "Go to organisational unit %s"
 
+#: views/search/_search.php:6
+msgid "Semester für Veranstaltungen:"
+msgstr "Indicate semester for course search:"
+
+#: views/search/_search.php:8
+msgid "alle"
+msgstr "all"
+
+#: views/links/index.php:20
+msgid "Eintrag bearbeiten"
+msgstr "Edit entry"
+
+#: views/links/index.php:22
+msgid "Eintrag löschen"
+msgstr "Delete entry"
+
+#: views/links/index.php:25
+msgid "Eintrag hochsortieren"
+msgstr "Move entry up"
+
+#: views/links/index.php:29
+msgid "Eintrag runtersortieren"
+msgstr "Move entry down"
+
+#: views/links/index.php:43
+msgid "Es sind keine Links vorhanden."
+msgstr "No links have been found."
+
+#: views/links/edit.php:4
+msgid "Linkziel"
+msgstr "Link target"
+
+#: views/links/edit.php:10
+msgid "Titel des Links"
+msgstr "Link title"
+
+#: views/links/edit.php:16
+msgid "Beschreibungstext"
+msgstr "Description"
+
+#: views/links/edit.php:22
+msgid "Reihenfolge"
+msgstr "Sort order"
+
+#: views/ticket/index.php:4
+msgid "Ihre Anfrage"
+msgstr ""
+
+#: views/ticket/index.php:7
+msgid "Absender"
+msgstr ""
+
+#: views/ticket/index.php:14
+msgid "Betreff"
+msgstr ""
+
+#: views/ticket/index.php:18
+#, fuzzy
+msgid "Geben Sie hier den Betreff Ihrer Anfrage ein..."
+msgstr "Enter your search term here."
+
+#: views/ticket/index.php:24
+msgid "Anfrage/Fehlermeldung"
+msgstr ""
+
+#: views/ticket/index.php:28
+msgid ""
+"Geben Sie hier Ihre Anfrage ein. Bitte beschreiben Sie Fehler möglichst "
+"genau, unter Angabe Ihres Betriebssystems, Browsers und der durchgeführten "
+"Aktionen, die zur Fehlermeldung geführt haben. Beschreiben Sie auch den "
+"genauen Text der Fehlermeldung, am besten, indem Sie einen Screenshot "
+"hinzufügen."
+msgstr ""
+
+#: views/ticket/index.php:37
+msgid "Datei(en)"
+msgstr ""
+
+#: views/ticket/index.php:41
+msgid "Datei(en) hochladen"
+msgstr ""
+
+#: views/ticket/index.php:46
+msgid ""
+"Laden Sie hier Screenhots oder weitere Dateien hoch. Mit Strg bzw. Command "
+"können Sie mehrere Dateien auswählen."
+msgstr ""
+
+#: views/ticket/index.php:50
+msgid "Datei(en) auswählen"
+msgstr ""
+
+#: views/ticket/index.php:56
+msgid "Anfrage abschicken"
+msgstr ""
+
+#: views/categories/index.php:6 views/categories/edit.php:5
+msgid "Name der Kategorie"
+msgstr "Category name"
+
+#: views/categories/index.php:9
+msgid "Aktionen"
+msgstr "Actions"
+
+#: views/categories/index.php:27
+msgid "Kategorie löschen"
+msgstr "Delete category"
+
+#: views/categories/index.php:27
+msgid "Kategorie wirklich löschen?"
+msgstr "Really delete category?"
+
+#: views/categories/index.php:38
+msgid "Es sind keine Kategorien für häufig gestellte Fragen vorhanden."
+msgstr "No frequently asked question categories have been found."
+
 #~ msgid "Kategorien hÃ¤ufig gestellter Fragen"
 #~ msgstr "Frequently asked question categories"
 
@@ -294,6 +356,3 @@ msgstr "Go to organisational unit %s"
 
 #~ msgid "Suchbegriff:"
 #~ msgstr "Search term:"
-
-#~ msgid "Geben Sie hier Ihren Suchbegriff ein."
-#~ msgstr "Enter your search term here."
