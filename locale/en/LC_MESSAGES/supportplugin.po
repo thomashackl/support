@@ -48,7 +48,7 @@ msgstr "Categories"
 
 #: SupportPlugin.class.php:60
 msgid "Supportanfrage stellen"
-msgstr "Create support request"
+msgstr "Request support"
 
 #: controllers/ticket.php:37
 msgid "Supportanfrage"
@@ -284,7 +284,7 @@ msgid ""
 "hinzufügen."
 msgstr ""
 "Enter your message here. Please describe errors as detailed as possible, "
-"providing your Operation System, Browser and describing the actions you "
+"providing your operating system, browser and describing the actions you "
 "executed that lead to the error message. Please also provide the exact "
 "error message, e.g. by uploading a screenshot."
 
