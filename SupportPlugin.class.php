@@ -37,20 +37,30 @@ class SupportPlugin extends StudIPPlugin implements SystemPlugin {
         $navigation = new Navigation($this->getDisplayName(), PluginEngine::getURL($this, array(), $active));
         $navigation->setImage(Icon::create('rescue', 'navigation', array('title' => _('Support'))));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
-            $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'), PluginEngine::getURL($this, array(), 'search'));
+            $searchNavi = new Navigation(dgettext('supportplugin', 'Suche'),
+                PluginEngine::getURL($this, array(), 'search'));
             $navigation->addSubnavigation('search', $searchNavi);
-            $linksNavi = new Navigation(dgettext('supportplugin', 'Wichtige Links'), PluginEngine::getURL($this, array(), 'links'));
+            $linksNavi = new Navigation(dgettext('supportplugin', 'Wichtige Links'),
+                PluginEngine::getURL($this, array(), 'links'));
             $navigation->addSubnavigation('links', $linksNavi);
 
         }
-        $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+        $faqNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'),
+            PluginEngine::getURL($this, array(), 'faq'));
         if ($GLOBALS['perm']->have_perm('root') || $support) {
-            $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'), PluginEngine::getURL($this, array(), 'faq'));
+            $faqlistNavi = new Navigation(dgettext('supportplugin', 'Häufig gestellte Fragen'),
+                PluginEngine::getURL($this, array(), 'faq'));
             $faqNavi->addSubnavigation('faqs', $faqlistNavi);
-            $categoriesNavi = new Navigation(dgettext('supportplugin', 'Kategorien'), PluginEngine::getURL($this, array(), 'categories'));
+            $categoriesNavi = new Navigation(dgettext('supportplugin', 'Kategorien'),
+                PluginEngine::getURL($this, array(), 'categories'));
             $faqNavi->addSubnavigation('categories', $categoriesNavi);
         }
         $navigation->addSubnavigation('faq', $faqNavi);
+        if ($GLOBALS['user']->username !== 'nobody') {
+            $ticketNavi = new Navigation(dgettext('supportplugin', 'Supportanfrage stellen'),
+                PluginEngine::getURL($this, array(), 'ticket'));
+            $navigation->addSubnavigation('ticket', $ticketNavi);
+        }
         Navigation::addItem('/support', $navigation);
 
         // Integrate FAQs in Podium search.
